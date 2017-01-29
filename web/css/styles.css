@@ -1555,34 +1555,58 @@ select.form-control:focus::-ms-value {
   border-width: 1px 0; }
   .form-control-static.form-control-sm, .input-group-sm > .form-control-static.form-control,
   .input-group-sm > .form-control-static.input-group-addon,
-  .input-group-sm > .input-group-btn > .form-control-static.btn, .form-control-static.form-control-lg, .input-group-lg > .form-control-static.form-control,
+  .input-group-sm > .input-group-btn > .form-control-static.btn, .actions-toolbar > .primary
+  .input-group-sm > .input-group-btn > a.form-control-static.action:not(.primary),
+  .actions-toolbar > .secondary
+  .input-group-sm > .input-group-btn > a.form-control-static.action:not(.primary),
+  .input-group-sm > .input-group-btn > .form-control-static.action.primary,
+  .input-group-sm > .input-group-btn > .form-control-static.action.secondary, .form-control-static.form-control-lg, .input-group-lg > .form-control-static.form-control,
   .input-group-lg > .form-control-static.input-group-addon,
-  .input-group-lg > .input-group-btn > .form-control-static.btn {
+  .input-group-lg > .input-group-btn > .form-control-static.btn, .actions-toolbar > .primary
+  .input-group-lg > .input-group-btn > a.form-control-static.action:not(.primary),
+  .actions-toolbar > .secondary
+  .input-group-lg > .input-group-btn > a.form-control-static.action:not(.primary),
+  .input-group-lg > .input-group-btn > .form-control-static.action.primary,
+  .input-group-lg > .input-group-btn > .form-control-static.action.secondary {
     padding-right: 0;
     padding-left: 0; }
 
 .form-control-sm, .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .btn {
+.input-group-sm > .input-group-btn > .btn, .actions-toolbar > .primary
+.input-group-sm > .input-group-btn > a.action:not(.primary),
+.actions-toolbar > .secondary
+.input-group-sm > .input-group-btn > a.action:not(.primary),
+.input-group-sm > .input-group-btn > .action.primary,
+.input-group-sm > .input-group-btn > .action.secondary {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   border-radius: 0.2rem; }
 
 select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]),
 .input-group-sm > select.input-group-addon:not([size]):not([multiple]),
-.input-group-sm > .input-group-btn > select.btn:not([size]):not([multiple]) {
+.input-group-sm > .input-group-btn > select.btn:not([size]):not([multiple]),
+.input-group-sm > .input-group-btn > select.action.primary:not([size]):not([multiple]),
+.input-group-sm > .input-group-btn > select.action.secondary:not([size]):not([multiple]) {
   height: 1.8125rem; }
 
 .form-control-lg, .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn {
+.input-group-lg > .input-group-btn > .btn, .actions-toolbar > .primary
+.input-group-lg > .input-group-btn > a.action:not(.primary),
+.actions-toolbar > .secondary
+.input-group-lg > .input-group-btn > a.action:not(.primary),
+.input-group-lg > .input-group-btn > .action.primary,
+.input-group-lg > .input-group-btn > .action.secondary {
   padding: 0.75rem 1.5rem;
   font-size: 1.25rem;
   border-radius: 0.3rem; }
 
 select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]),
 .input-group-lg > select.input-group-addon:not([size]):not([multiple]),
-.input-group-lg > .input-group-btn > select.btn:not([size]):not([multiple]) {
+.input-group-lg > .input-group-btn > select.btn:not([size]):not([multiple]),
+.input-group-lg > .input-group-btn > select.action.primary:not([size]):not([multiple]),
+.input-group-lg > .input-group-btn > select.action.secondary:not([size]):not([multiple]) {
   height: 3.16667rem; }
 
 .form-group {
@@ -1740,7 +1764,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     .form-inline .has-feedback .form-control-feedback {
       top: 0; } }
 
-.btn {
+.btn, .actions-toolbar > .primary a.action:not(.primary),
+.actions-toolbar > .secondary a.action:not(.primary), a.action.primary, .action.primary, .action.secondary {
   display: inline-block;
   font-weight: normal;
   line-height: 1.25;
@@ -1753,19 +1778,38 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   font-size: 1rem;
   border-radius: 0.25rem;
   transition: all 0.2s ease-in-out; }
-  .btn:focus, .btn:hover {
+  .btn:focus, .actions-toolbar > .primary a.action:focus:not(.primary),
+  .actions-toolbar > .secondary a.action:focus:not(.primary), .action.primary:focus, .action.secondary:focus, .btn:hover, .actions-toolbar > .primary a.action:hover:not(.primary),
+  .actions-toolbar > .secondary a.action:hover:not(.primary), .action.primary:hover, .action.secondary:hover {
     text-decoration: none; }
-  .btn:focus, .btn.focus {
+  .btn:focus, .actions-toolbar > .primary a.action:focus:not(.primary),
+  .actions-toolbar > .secondary a.action:focus:not(.primary), .action.primary:focus, .action.secondary:focus, .btn.focus, .actions-toolbar > .primary a.focus.action:not(.primary),
+  .actions-toolbar > .secondary a.focus.action:not(.primary), .focus.action.primary, .focus.action.secondary {
     outline: 0;
     box-shadow: 0 0 0 2px rgba(2, 117, 216, 0.25); }
-  .btn.disabled, .btn:disabled {
+  .btn.disabled, .actions-toolbar > .primary a.disabled.action:not(.primary),
+  .actions-toolbar > .secondary a.disabled.action:not(.primary), .disabled.action.primary, .disabled.action.secondary, .btn:disabled, .actions-toolbar > .primary a.action:disabled:not(.primary),
+  .actions-toolbar > .secondary a.action:disabled:not(.primary), .action.primary:disabled, .action.secondary:disabled {
     cursor: not-allowed;
     opacity: .65; }
-  .btn:active, .btn.active {
+  .btn:active, .actions-toolbar > .primary a.action:active:not(.primary),
+  .actions-toolbar > .secondary a.action:active:not(.primary), .action.primary:active, .action.secondary:active, .btn.active, .actions-toolbar > .primary a.active.action:not(.primary), .actions-toolbar > .primary .breadcrumbs .items a.action.item:not(.primary):last-child, .breadcrumbs .items .actions-toolbar > .primary a.action.item:not(.primary):last-child,
+  .actions-toolbar > .secondary a.active.action:not(.primary),
+  .actions-toolbar > .secondary .breadcrumbs .items a.action.item:not(.primary):last-child, .breadcrumbs .items
+  .actions-toolbar > .secondary a.action.item:not(.primary):last-child, .breadcrumbs .items .btn.item:last-child, .breadcrumbs .items .item.action.primary:last-child, .breadcrumbs .items .item.action.secondary:last-child, .active.action.primary, .active.action.secondary {
     background-image: none; }
 
-a.btn.disabled,
-fieldset[disabled] a.btn {
+a.btn.disabled, .actions-toolbar > .primary a.disabled.action:not(.primary),
+.actions-toolbar > .secondary a.disabled.action:not(.primary), a.disabled.action.primary, a.disabled.action.secondary,
+fieldset[disabled] a.btn,
+fieldset[disabled] .actions-toolbar > .primary a.action:not(.primary), .actions-toolbar > .primary
+fieldset[disabled] a.action:not(.primary),
+fieldset[disabled]
+.actions-toolbar > .secondary a.action:not(.primary),
+.actions-toolbar > .secondary
+fieldset[disabled] a.action:not(.primary),
+fieldset[disabled] a.action.primary,
+fieldset[disabled] a.action.secondary {
   pointer-events: none; }
 
 .btn-primary {
@@ -1781,7 +1825,7 @@ fieldset[disabled] a.btn {
   .btn-primary.disabled, .btn-primary:disabled {
     background-color: #0275d8;
     border-color: #0275d8; }
-  .btn-primary:active, .btn-primary.active,
+  .btn-primary:active, .btn-primary.active, .breadcrumbs .items .btn-primary.item:last-child,
   .show > .btn-primary.dropdown-toggle {
     color: #fff;
     background-color: #025aa5;
@@ -1801,7 +1845,7 @@ fieldset[disabled] a.btn {
   .btn-secondary.disabled, .btn-secondary:disabled {
     background-color: #fff;
     border-color: #ccc; }
-  .btn-secondary:active, .btn-secondary.active,
+  .btn-secondary:active, .btn-secondary.active, .breadcrumbs .items .btn-secondary.item:last-child,
   .show > .btn-secondary.dropdown-toggle {
     color: #292b2c;
     background-color: #e6e6e6;
@@ -1821,7 +1865,7 @@ fieldset[disabled] a.btn {
   .btn-info.disabled, .btn-info:disabled {
     background-color: #5bc0de;
     border-color: #5bc0de; }
-  .btn-info:active, .btn-info.active,
+  .btn-info:active, .btn-info.active, .breadcrumbs .items .btn-info.item:last-child,
   .show > .btn-info.dropdown-toggle {
     color: #fff;
     background-color: #31b0d5;
@@ -1841,7 +1885,7 @@ fieldset[disabled] a.btn {
   .btn-success.disabled, .btn-success:disabled {
     background-color: #5cb85c;
     border-color: #5cb85c; }
-  .btn-success:active, .btn-success.active,
+  .btn-success:active, .btn-success.active, .breadcrumbs .items .btn-success.item:last-child,
   .show > .btn-success.dropdown-toggle {
     color: #fff;
     background-color: #449d44;
@@ -1861,7 +1905,7 @@ fieldset[disabled] a.btn {
   .btn-warning.disabled, .btn-warning:disabled {
     background-color: #f0ad4e;
     border-color: #f0ad4e; }
-  .btn-warning:active, .btn-warning.active,
+  .btn-warning:active, .btn-warning.active, .breadcrumbs .items .btn-warning.item:last-child,
   .show > .btn-warning.dropdown-toggle {
     color: #fff;
     background-color: #ec971f;
@@ -1881,7 +1925,7 @@ fieldset[disabled] a.btn {
   .btn-danger.disabled, .btn-danger:disabled {
     background-color: #d9534f;
     border-color: #d9534f; }
-  .btn-danger:active, .btn-danger.active,
+  .btn-danger:active, .btn-danger.active, .breadcrumbs .items .btn-danger.item:last-child,
   .show > .btn-danger.dropdown-toggle {
     color: #fff;
     background-color: #c9302c;
@@ -1902,7 +1946,7 @@ fieldset[disabled] a.btn {
   .btn-outline-primary.disabled, .btn-outline-primary:disabled {
     color: #0275d8;
     background-color: transparent; }
-  .btn-outline-primary:active, .btn-outline-primary.active,
+  .btn-outline-primary:active, .btn-outline-primary.active, .breadcrumbs .items .btn-outline-primary.item:last-child,
   .show > .btn-outline-primary.dropdown-toggle {
     color: #fff;
     background-color: #0275d8;
@@ -1922,7 +1966,7 @@ fieldset[disabled] a.btn {
   .btn-outline-secondary.disabled, .btn-outline-secondary:disabled {
     color: #ccc;
     background-color: transparent; }
-  .btn-outline-secondary:active, .btn-outline-secondary.active,
+  .btn-outline-secondary:active, .btn-outline-secondary.active, .breadcrumbs .items .btn-outline-secondary.item:last-child,
   .show > .btn-outline-secondary.dropdown-toggle {
     color: #fff;
     background-color: #ccc;
@@ -1942,7 +1986,7 @@ fieldset[disabled] a.btn {
   .btn-outline-info.disabled, .btn-outline-info:disabled {
     color: #5bc0de;
     background-color: transparent; }
-  .btn-outline-info:active, .btn-outline-info.active,
+  .btn-outline-info:active, .btn-outline-info.active, .breadcrumbs .items .btn-outline-info.item:last-child,
   .show > .btn-outline-info.dropdown-toggle {
     color: #fff;
     background-color: #5bc0de;
@@ -1962,7 +2006,7 @@ fieldset[disabled] a.btn {
   .btn-outline-success.disabled, .btn-outline-success:disabled {
     color: #5cb85c;
     background-color: transparent; }
-  .btn-outline-success:active, .btn-outline-success.active,
+  .btn-outline-success:active, .btn-outline-success.active, .breadcrumbs .items .btn-outline-success.item:last-child,
   .show > .btn-outline-success.dropdown-toggle {
     color: #fff;
     background-color: #5cb85c;
@@ -1982,7 +2026,7 @@ fieldset[disabled] a.btn {
   .btn-outline-warning.disabled, .btn-outline-warning:disabled {
     color: #f0ad4e;
     background-color: transparent; }
-  .btn-outline-warning:active, .btn-outline-warning.active,
+  .btn-outline-warning:active, .btn-outline-warning.active, .breadcrumbs .items .btn-outline-warning.item:last-child,
   .show > .btn-outline-warning.dropdown-toggle {
     color: #fff;
     background-color: #f0ad4e;
@@ -2002,51 +2046,79 @@ fieldset[disabled] a.btn {
   .btn-outline-danger.disabled, .btn-outline-danger:disabled {
     color: #d9534f;
     background-color: transparent; }
-  .btn-outline-danger:active, .btn-outline-danger.active,
+  .btn-outline-danger:active, .btn-outline-danger.active, .breadcrumbs .items .btn-outline-danger.item:last-child,
   .show > .btn-outline-danger.dropdown-toggle {
     color: #fff;
     background-color: #d9534f;
     border-color: #d9534f; }
 
-.btn-link {
+.btn-link, .actions-toolbar > .primary a.action:not(.primary),
+.actions-toolbar > .secondary a.action:not(.primary), a.action.primary {
   font-weight: normal;
   color: #0275d8;
   border-radius: 0; }
-  .btn-link, .btn-link:active, .btn-link.active, .btn-link:disabled {
+  .btn-link, .actions-toolbar > .primary a.action:not(.primary),
+  .actions-toolbar > .secondary a.action:not(.primary), a.action.primary, .btn-link:active, .actions-toolbar > .primary a.action:active:not(.primary),
+  .actions-toolbar > .secondary a.action:active:not(.primary), a.action.primary:active, .btn-link.active, .actions-toolbar > .primary a.active.action:not(.primary), .actions-toolbar > .primary .breadcrumbs .items a.action.item:not(.primary):last-child, .breadcrumbs .items .actions-toolbar > .primary a.action.item:not(.primary):last-child,
+  .actions-toolbar > .secondary a.active.action:not(.primary),
+  .actions-toolbar > .secondary .breadcrumbs .items a.action.item:not(.primary):last-child, .breadcrumbs .items
+  .actions-toolbar > .secondary a.action.item:not(.primary):last-child, .breadcrumbs .items .btn-link.item:last-child, .breadcrumbs .items a.item.action.primary:last-child, a.active.action.primary, .btn-link:disabled, .actions-toolbar > .primary a.action:disabled:not(.primary),
+  .actions-toolbar > .secondary a.action:disabled:not(.primary), a.action.primary:disabled {
     background-color: transparent; }
-  .btn-link, .btn-link:focus, .btn-link:active {
+  .btn-link, .actions-toolbar > .primary a.action:not(.primary),
+  .actions-toolbar > .secondary a.action:not(.primary), a.action.primary, .btn-link:focus, .actions-toolbar > .primary a.action:focus:not(.primary),
+  .actions-toolbar > .secondary a.action:focus:not(.primary), a.action.primary:focus, .btn-link:active, .actions-toolbar > .primary a.action:active:not(.primary),
+  .actions-toolbar > .secondary a.action:active:not(.primary), a.action.primary:active {
     border-color: transparent; }
-  .btn-link:hover {
+  .btn-link:hover, .actions-toolbar > .primary a.action:hover:not(.primary),
+  .actions-toolbar > .secondary a.action:hover:not(.primary), a.action.primary:hover {
     border-color: transparent; }
-  .btn-link:focus, .btn-link:hover {
+  .btn-link:focus, .actions-toolbar > .primary a.action:focus:not(.primary),
+  .actions-toolbar > .secondary a.action:focus:not(.primary), a.action.primary:focus, .btn-link:hover, .actions-toolbar > .primary a.action:hover:not(.primary),
+  .actions-toolbar > .secondary a.action:hover:not(.primary), a.action.primary:hover {
     color: #014c8c;
     text-decoration: underline;
     background-color: transparent; }
-  .btn-link:disabled {
+  .btn-link:disabled, .actions-toolbar > .primary a.action:disabled:not(.primary),
+  .actions-toolbar > .secondary a.action:disabled:not(.primary), a.action.primary:disabled {
     color: #636c72; }
-    .btn-link:disabled:focus, .btn-link:disabled:hover {
+    .btn-link:disabled:focus, .actions-toolbar > .primary a.action:disabled:focus:not(.primary),
+    .actions-toolbar > .secondary a.action:disabled:focus:not(.primary), a.action.primary:disabled:focus, .btn-link:disabled:hover, .actions-toolbar > .primary a.action:disabled:hover:not(.primary),
+    .actions-toolbar > .secondary a.action:disabled:hover:not(.primary), a.action.primary:disabled:hover {
       text-decoration: none; }
 
-.btn-lg, .btn-group-lg > .btn {
+.btn-lg, .btn-group-lg > .btn, .actions-toolbar > .primary .btn-group-lg > a.action:not(.primary),
+.actions-toolbar > .secondary .btn-group-lg > a.action:not(.primary), .btn-group-lg > .action.primary, .btn-group-lg > .action.secondary {
   padding: 0.75rem 1.5rem;
   font-size: 1.25rem;
   border-radius: 0.3rem; }
 
-.btn-sm, .btn-group-sm > .btn {
+.btn-sm, .btn-group-sm > .btn, .actions-toolbar > .primary .btn-group-sm > a.action:not(.primary),
+.actions-toolbar > .secondary .btn-group-sm > a.action:not(.primary), .btn-group-sm > .action.primary, .btn-group-sm > .action.secondary {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   border-radius: 0.2rem; }
 
-.btn-block {
+.btn-block, .actions-toolbar > .primary .action,
+.actions-toolbar > .secondary .action {
   display: block;
   width: 100%; }
 
-.btn-block + .btn-block {
+.btn-block + .btn-block, .actions-toolbar > .primary .action + .btn-block,
+.actions-toolbar > .secondary .action + .btn-block, .actions-toolbar > .primary .btn-block + .action, .actions-toolbar > .primary .action + .action,
+.actions-toolbar > .secondary .btn-block + .action, .actions-toolbar > .primary
+.actions-toolbar > .secondary .action + .action,
+.actions-toolbar > .secondary .actions-toolbar > .primary .action + .action, .actions-toolbar > .secondary .action + .action {
   margin-top: 0.5rem; }
 
-input[type="submit"].btn-block,
+input[type="submit"].btn-block, .actions-toolbar > .primary input[type="submit"].action,
+.actions-toolbar > .secondary input[type="submit"].action,
 input[type="reset"].btn-block,
-input[type="button"].btn-block {
+.actions-toolbar > .primary input[type="reset"].action,
+.actions-toolbar > .secondary input[type="reset"].action,
+input[type="button"].btn-block,
+.actions-toolbar > .primary input[type="button"].action,
+.actions-toolbar > .secondary input[type="button"].action {
   width: 100%; }
 
 .fade {
@@ -2134,7 +2206,7 @@ tbody.collapse.show {
     color: #1d1e1f;
     text-decoration: none;
     background-color: #f7f7f9; }
-  .dropdown-item.active, .dropdown-item:active {
+  .dropdown-item.active, .breadcrumbs .items .dropdown-item.item:last-child, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
     background-color: #0275d8; }
@@ -2183,25 +2255,164 @@ tbody.collapse.show {
   position: relative;
   display: inline-flex;
   vertical-align: middle; }
-  .btn-group > .btn,
-  .btn-group-vertical > .btn {
+  .btn-group > .btn, .actions-toolbar > .primary .btn-group > a.action:not(.primary),
+  .actions-toolbar > .secondary .btn-group > a.action:not(.primary), .btn-group > .action.primary, .btn-group > .action.secondary,
+  .btn-group-vertical > .btn, .actions-toolbar > .primary
+  .btn-group-vertical > a.action:not(.primary),
+  .actions-toolbar > .secondary
+  .btn-group-vertical > a.action:not(.primary),
+  .btn-group-vertical > .action.primary,
+  .btn-group-vertical > .action.secondary {
     position: relative;
     flex: 0 1 auto; }
-    .btn-group > .btn:hover,
-    .btn-group-vertical > .btn:hover {
+    .btn-group > .btn:hover, .actions-toolbar > .primary .btn-group > a.action:hover:not(.primary),
+    .actions-toolbar > .secondary .btn-group > a.action:hover:not(.primary), .btn-group > .action.primary:hover, .btn-group > .action.secondary:hover,
+    .btn-group-vertical > .btn:hover, .actions-toolbar > .primary
+    .btn-group-vertical > a.action:hover:not(.primary),
+    .actions-toolbar > .secondary
+    .btn-group-vertical > a.action:hover:not(.primary),
+    .btn-group-vertical > .action.primary:hover,
+    .btn-group-vertical > .action.secondary:hover {
       z-index: 2; }
-    .btn-group > .btn:focus, .btn-group > .btn:active, .btn-group > .btn.active,
-    .btn-group-vertical > .btn:focus,
-    .btn-group-vertical > .btn:active,
-    .btn-group-vertical > .btn.active {
+    .btn-group > .btn:focus, .actions-toolbar > .primary .btn-group > a.action:focus:not(.primary),
+    .actions-toolbar > .secondary .btn-group > a.action:focus:not(.primary), .btn-group > .action.primary:focus, .btn-group > .action.secondary:focus, .btn-group > .btn:active, .actions-toolbar > .primary .btn-group > a.action:active:not(.primary),
+    .actions-toolbar > .secondary .btn-group > a.action:active:not(.primary), .btn-group > .action.primary:active, .btn-group > .action.secondary:active, .btn-group > .btn.active, .actions-toolbar > .primary .btn-group > a.active.action:not(.primary), .actions-toolbar > .primary .breadcrumbs .items .btn-group > a.action.item:not(.primary):last-child, .breadcrumbs .items .actions-toolbar > .primary .btn-group > a.action.item:not(.primary):last-child,
+    .actions-toolbar > .secondary .btn-group > a.active.action:not(.primary),
+    .actions-toolbar > .secondary .breadcrumbs .items .btn-group > a.action.item:not(.primary):last-child, .breadcrumbs .items
+    .actions-toolbar > .secondary .btn-group > a.action.item:not(.primary):last-child, .breadcrumbs .items .btn-group > .btn.item:last-child, .breadcrumbs .items .btn-group > .item.action.primary:last-child, .breadcrumbs .items .btn-group > .item.action.secondary:last-child, .btn-group > .active.action.primary, .btn-group > .active.action.secondary,
+    .btn-group-vertical > .btn:focus, .actions-toolbar > .primary
+    .btn-group-vertical > a.action:focus:not(.primary),
+    .actions-toolbar > .secondary
+    .btn-group-vertical > a.action:focus:not(.primary),
+    .btn-group-vertical > .action.primary:focus,
+    .btn-group-vertical > .action.secondary:focus,
+    .btn-group-vertical > .btn:active, .actions-toolbar > .primary
+    .btn-group-vertical > a.action:active:not(.primary),
+    .actions-toolbar > .secondary
+    .btn-group-vertical > a.action:active:not(.primary),
+    .btn-group-vertical > .action.primary:active,
+    .btn-group-vertical > .action.secondary:active,
+    .btn-group-vertical > .btn.active, .actions-toolbar > .primary
+    .btn-group-vertical > a.active.action:not(.primary), .actions-toolbar > .primary .breadcrumbs .items
+    .btn-group-vertical > a.action.item:not(.primary):last-child, .breadcrumbs .items .actions-toolbar > .primary
+    .btn-group-vertical > a.action.item:not(.primary):last-child,
+    .actions-toolbar > .secondary
+    .btn-group-vertical > a.active.action:not(.primary),
+    .actions-toolbar > .secondary .breadcrumbs .items
+    .btn-group-vertical > a.action.item:not(.primary):last-child, .breadcrumbs .items
+    .actions-toolbar > .secondary
+    .btn-group-vertical > a.action.item:not(.primary):last-child, .breadcrumbs .items
+    .btn-group-vertical > .btn.item:last-child, .breadcrumbs .items
+    .btn-group-vertical > .item.action.primary:last-child, .breadcrumbs .items
+    .btn-group-vertical > .item.action.secondary:last-child,
+    .btn-group-vertical > .active.action.primary,
+    .btn-group-vertical > .active.action.secondary {
       z-index: 2; }
-  .btn-group .btn + .btn,
+  .btn-group .btn + .btn, .btn-group .actions-toolbar > .primary a.action:not(.primary) + .btn, .actions-toolbar > .primary .btn-group a.action:not(.primary) + .btn, .btn-group
+  .actions-toolbar > .secondary a.action:not(.primary) + .btn,
+  .actions-toolbar > .secondary .btn-group a.action:not(.primary) + .btn, .btn-group .action.primary + .btn, .btn-group .action.secondary + .btn, .btn-group .actions-toolbar > .primary .btn + a.action:not(.primary), .actions-toolbar > .primary .btn-group .btn + a.action:not(.primary), .btn-group .actions-toolbar > .primary a.action:not(.primary) + a.action:not(.primary), .actions-toolbar > .primary .btn-group a.action:not(.primary) + a.action:not(.primary), .btn-group
+  .actions-toolbar > .secondary .actions-toolbar > .primary a.action:not(.primary) + a.action:not(.primary), .btn-group .actions-toolbar > .primary .action.primary + a.action:not(.primary), .actions-toolbar > .primary .btn-group .action.primary + a.action:not(.primary), .btn-group .actions-toolbar > .primary .action.secondary + a.action:not(.primary), .actions-toolbar > .primary .btn-group .action.secondary + a.action:not(.primary), .btn-group
+  .actions-toolbar > .secondary .btn + a.action:not(.primary),
+  .actions-toolbar > .secondary .btn-group .btn + a.action:not(.primary), .btn-group .actions-toolbar > .primary
+  .actions-toolbar > .secondary a.action:not(.primary) + a.action:not(.primary), .btn-group .actions-toolbar > .secondary a.action:not(.primary) + a.action:not(.primary), .actions-toolbar > .secondary .btn-group a.action:not(.primary) + a.action:not(.primary), .btn-group
+  .actions-toolbar > .secondary .action.primary + a.action:not(.primary),
+  .actions-toolbar > .secondary .btn-group .action.primary + a.action:not(.primary), .btn-group
+  .actions-toolbar > .secondary .action.secondary + a.action:not(.primary),
+  .actions-toolbar > .secondary .btn-group .action.secondary + a.action:not(.primary), .btn-group .btn + .action.primary, .btn-group .actions-toolbar > .primary a.action:not(.primary) + .action.primary, .actions-toolbar > .primary .btn-group a.action:not(.primary) + .action.primary, .btn-group
+  .actions-toolbar > .secondary a.action:not(.primary) + .action.primary,
+  .actions-toolbar > .secondary .btn-group a.action:not(.primary) + .action.primary, .btn-group .action.primary + .action.primary, .btn-group .action.secondary + .action.primary, .btn-group .btn + .action.secondary, .btn-group .actions-toolbar > .primary a.action:not(.primary) + .action.secondary, .actions-toolbar > .primary .btn-group a.action:not(.primary) + .action.secondary, .btn-group
+  .actions-toolbar > .secondary a.action:not(.primary) + .action.secondary,
+  .actions-toolbar > .secondary .btn-group a.action:not(.primary) + .action.secondary, .btn-group .action.primary + .action.secondary, .btn-group .action.secondary + .action.secondary,
   .btn-group .btn + .btn-group,
+  .btn-group .actions-toolbar > .primary a.action:not(.primary) + .btn-group, .actions-toolbar > .primary
+  .btn-group a.action:not(.primary) + .btn-group,
+  .btn-group
+  .actions-toolbar > .secondary a.action:not(.primary) + .btn-group,
+  .actions-toolbar > .secondary
+  .btn-group a.action:not(.primary) + .btn-group,
+  .btn-group .action.primary + .btn-group,
+  .btn-group .action.secondary + .btn-group,
   .btn-group .btn-group + .btn,
+  .btn-group .actions-toolbar > .primary .btn-group + a.action:not(.primary), .actions-toolbar > .primary
+  .btn-group .btn-group + a.action:not(.primary),
+  .btn-group
+  .actions-toolbar > .secondary .btn-group + a.action:not(.primary),
+  .actions-toolbar > .secondary
+  .btn-group .btn-group + a.action:not(.primary),
+  .btn-group .btn-group + .action.primary,
+  .btn-group .btn-group + .action.secondary,
   .btn-group .btn-group + .btn-group,
   .btn-group-vertical .btn + .btn,
+  .btn-group-vertical .actions-toolbar > .primary a.action:not(.primary) + .btn, .actions-toolbar > .primary
+  .btn-group-vertical a.action:not(.primary) + .btn,
+  .btn-group-vertical
+  .actions-toolbar > .secondary a.action:not(.primary) + .btn,
+  .actions-toolbar > .secondary
+  .btn-group-vertical a.action:not(.primary) + .btn,
+  .btn-group-vertical .action.primary + .btn,
+  .btn-group-vertical .action.secondary + .btn,
+  .btn-group-vertical .actions-toolbar > .primary .btn + a.action:not(.primary), .actions-toolbar > .primary
+  .btn-group-vertical .btn + a.action:not(.primary),
+  .btn-group-vertical .actions-toolbar > .primary a.action:not(.primary) + a.action:not(.primary), .actions-toolbar > .primary
+  .btn-group-vertical a.action:not(.primary) + a.action:not(.primary),
+  .btn-group-vertical
+  .actions-toolbar > .secondary .actions-toolbar > .primary a.action:not(.primary) + a.action:not(.primary),
+  .btn-group-vertical .actions-toolbar > .primary .action.primary + a.action:not(.primary), .actions-toolbar > .primary
+  .btn-group-vertical .action.primary + a.action:not(.primary),
+  .btn-group-vertical .actions-toolbar > .primary .action.secondary + a.action:not(.primary), .actions-toolbar > .primary
+  .btn-group-vertical .action.secondary + a.action:not(.primary),
+  .btn-group-vertical
+  .actions-toolbar > .secondary .btn + a.action:not(.primary),
+  .actions-toolbar > .secondary
+  .btn-group-vertical .btn + a.action:not(.primary),
+  .btn-group-vertical .actions-toolbar > .primary
+  .actions-toolbar > .secondary a.action:not(.primary) + a.action:not(.primary),
+  .btn-group-vertical .actions-toolbar > .secondary a.action:not(.primary) + a.action:not(.primary), .actions-toolbar > .secondary
+  .btn-group-vertical a.action:not(.primary) + a.action:not(.primary),
+  .btn-group-vertical
+  .actions-toolbar > .secondary .action.primary + a.action:not(.primary),
+  .actions-toolbar > .secondary
+  .btn-group-vertical .action.primary + a.action:not(.primary),
+  .btn-group-vertical
+  .actions-toolbar > .secondary .action.secondary + a.action:not(.primary),
+  .actions-toolbar > .secondary
+  .btn-group-vertical .action.secondary + a.action:not(.primary),
+  .btn-group-vertical .btn + .action.primary,
+  .btn-group-vertical .actions-toolbar > .primary a.action:not(.primary) + .action.primary, .actions-toolbar > .primary
+  .btn-group-vertical a.action:not(.primary) + .action.primary,
+  .btn-group-vertical
+  .actions-toolbar > .secondary a.action:not(.primary) + .action.primary,
+  .actions-toolbar > .secondary
+  .btn-group-vertical a.action:not(.primary) + .action.primary,
+  .btn-group-vertical .action.primary + .action.primary,
+  .btn-group-vertical .action.secondary + .action.primary,
+  .btn-group-vertical .btn + .action.secondary,
+  .btn-group-vertical .actions-toolbar > .primary a.action:not(.primary) + .action.secondary, .actions-toolbar > .primary
+  .btn-group-vertical a.action:not(.primary) + .action.secondary,
+  .btn-group-vertical
+  .actions-toolbar > .secondary a.action:not(.primary) + .action.secondary,
+  .actions-toolbar > .secondary
+  .btn-group-vertical a.action:not(.primary) + .action.secondary,
+  .btn-group-vertical .action.primary + .action.secondary,
+  .btn-group-vertical .action.secondary + .action.secondary,
   .btn-group-vertical .btn + .btn-group,
+  .btn-group-vertical .actions-toolbar > .primary a.action:not(.primary) + .btn-group, .actions-toolbar > .primary
+  .btn-group-vertical a.action:not(.primary) + .btn-group,
+  .btn-group-vertical
+  .actions-toolbar > .secondary a.action:not(.primary) + .btn-group,
+  .actions-toolbar > .secondary
+  .btn-group-vertical a.action:not(.primary) + .btn-group,
+  .btn-group-vertical .action.primary + .btn-group,
+  .btn-group-vertical .action.secondary + .btn-group,
   .btn-group-vertical .btn-group + .btn,
+  .btn-group-vertical .actions-toolbar > .primary .btn-group + a.action:not(.primary), .actions-toolbar > .primary
+  .btn-group-vertical .btn-group + a.action:not(.primary),
+  .btn-group-vertical
+  .actions-toolbar > .secondary .btn-group + a.action:not(.primary),
+  .actions-toolbar > .secondary
+  .btn-group-vertical .btn-group + a.action:not(.primary),
+  .btn-group-vertical .btn-group + .action.primary,
+  .btn-group-vertical .btn-group + .action.secondary,
   .btn-group-vertical .btn-group + .btn-group {
     margin-left: -1px; }
 
@@ -2211,16 +2422,20 @@ tbody.collapse.show {
   .btn-toolbar .input-group {
     width: auto; }
 
-.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle), .actions-toolbar > .primary .btn-group > a.action:not(:first-child):not(:last-child):not(.dropdown-toggle):not(.primary),
+.actions-toolbar > .secondary .btn-group > a.action:not(:first-child):not(:last-child):not(.dropdown-toggle):not(.primary), .btn-group > .action.primary:not(:first-child):not(:last-child):not(.dropdown-toggle), .btn-group > .action.secondary:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0; }
 
-.btn-group > .btn:first-child {
+.btn-group > .btn:first-child, .actions-toolbar > .primary .btn-group > a.action:first-child:not(.primary),
+.actions-toolbar > .secondary .btn-group > a.action:first-child:not(.primary), .btn-group > .action.primary:first-child, .btn-group > .action.secondary:first-child {
   margin-left: 0; }
-  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle), .actions-toolbar > .primary .btn-group > a.action:first-child:not(:last-child):not(.dropdown-toggle):not(.primary),
+  .actions-toolbar > .secondary .btn-group > a.action:first-child:not(:last-child):not(.dropdown-toggle):not(.primary), .btn-group > .action.primary:first-child:not(:last-child):not(.dropdown-toggle), .btn-group > .action.secondary:first-child:not(:last-child):not(.dropdown-toggle) {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0; }
 
-.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .btn:last-child:not(:first-child), .actions-toolbar > .primary .btn-group > a.action:last-child:not(:first-child):not(.primary),
+.actions-toolbar > .secondary .btn-group > a.action:last-child:not(:first-child):not(.primary), .btn-group > .action.primary:last-child:not(:first-child), .btn-group > .action.secondary:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
@@ -2228,15 +2443,18 @@ tbody.collapse.show {
 .btn-group > .btn-group {
   float: left; }
 
-.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn, .actions-toolbar > .primary .btn-group > .btn-group:not(:first-child):not(:last-child) > a.action:not(.primary),
+.actions-toolbar > .secondary .btn-group > .btn-group:not(:first-child):not(:last-child) > a.action:not(.primary), .btn-group > .btn-group:not(:first-child):not(:last-child) > .action.primary, .btn-group > .btn-group:not(:first-child):not(:last-child) > .action.secondary {
   border-radius: 0; }
 
-.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,
+.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child, .actions-toolbar > .primary .btn-group > .btn-group:first-child:not(:last-child) > a.action:last-child:not(.primary),
+.actions-toolbar > .secondary .btn-group > .btn-group:first-child:not(:last-child) > a.action:last-child:not(.primary), .btn-group > .btn-group:first-child:not(:last-child) > .action.primary:last-child, .btn-group > .btn-group:first-child:not(:last-child) > .action.secondary:last-child,
 .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
-.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child, .actions-toolbar > .primary .btn-group > .btn-group:last-child:not(:first-child) > a.action:first-child:not(.primary),
+.actions-toolbar > .secondary .btn-group > .btn-group:last-child:not(:first-child) > a.action:first-child:not(.primary), .btn-group > .btn-group:last-child:not(:first-child) > .action.primary:first-child, .btn-group > .btn-group:last-child:not(:first-child) > .action.secondary:first-child {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
@@ -2244,17 +2462,21 @@ tbody.collapse.show {
 .btn-group.open .dropdown-toggle {
   outline: 0; }
 
-.btn + .dropdown-toggle-split {
+.btn + .dropdown-toggle-split, .actions-toolbar > .primary a.action:not(.primary) + .dropdown-toggle-split,
+.actions-toolbar > .secondary a.action:not(.primary) + .dropdown-toggle-split, .action.primary + .dropdown-toggle-split, .action.secondary + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem; }
-  .btn + .dropdown-toggle-split::after {
+  .btn + .dropdown-toggle-split::after, .actions-toolbar > .primary a.action:not(.primary) + .dropdown-toggle-split::after,
+  .actions-toolbar > .secondary a.action:not(.primary) + .dropdown-toggle-split::after, .action.primary + .dropdown-toggle-split::after, .action.secondary + .dropdown-toggle-split::after {
     margin-left: 0; }
 
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .actions-toolbar > .primary .btn-group-sm > a.action:not(.primary) + .dropdown-toggle-split,
+.actions-toolbar > .secondary .btn-group-sm > a.action:not(.primary) + .dropdown-toggle-split, .btn-group-sm > .action.primary + .dropdown-toggle-split, .btn-group-sm > .action.secondary + .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem; }
 
-.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .actions-toolbar > .primary .btn-group-lg > a.action:not(.primary) + .dropdown-toggle-split,
+.actions-toolbar > .secondary .btn-group-lg > a.action:not(.primary) + .dropdown-toggle-split, .btn-group-lg > .action.primary + .dropdown-toggle-split, .btn-group-lg > .action.secondary + .dropdown-toggle-split {
   padding-right: 1.125rem;
   padding-left: 1.125rem; }
 
@@ -2263,43 +2485,85 @@ tbody.collapse.show {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center; }
-  .btn-group-vertical .btn,
+  .btn-group-vertical .btn, .btn-group-vertical .actions-toolbar > .primary a.action:not(.primary), .actions-toolbar > .primary .btn-group-vertical a.action:not(.primary), .btn-group-vertical
+  .actions-toolbar > .secondary a.action:not(.primary),
+  .actions-toolbar > .secondary .btn-group-vertical a.action:not(.primary), .btn-group-vertical .action.primary, .btn-group-vertical .action.secondary,
   .btn-group-vertical .btn-group {
     width: 100%; }
-  .btn-group-vertical > .btn + .btn,
-  .btn-group-vertical > .btn + .btn-group,
-  .btn-group-vertical > .btn-group + .btn,
+  .btn-group-vertical > .btn + .btn, .actions-toolbar > .primary .btn-group-vertical > a.action:not(.primary) + .btn,
+  .actions-toolbar > .secondary .btn-group-vertical > a.action:not(.primary) + .btn, .btn-group-vertical > .action.primary + .btn, .btn-group-vertical > .action.secondary + .btn, .actions-toolbar > .primary .btn-group-vertical > .btn + a.action:not(.primary), .actions-toolbar > .primary .btn-group-vertical > a.action:not(.primary) + a.action:not(.primary), .actions-toolbar > .primary .btn-group-vertical > .action.primary + a.action:not(.primary), .actions-toolbar > .primary .btn-group-vertical > .action.secondary + a.action:not(.primary),
+  .actions-toolbar > .secondary .btn-group-vertical > .btn + a.action:not(.primary), .actions-toolbar > .primary
+  .actions-toolbar > .secondary .btn-group-vertical > a.action:not(.primary) + a.action:not(.primary),
+  .actions-toolbar > .secondary .actions-toolbar > .primary .btn-group-vertical > a.action:not(.primary) + a.action:not(.primary), .actions-toolbar > .secondary .btn-group-vertical > a.action:not(.primary) + a.action:not(.primary),
+  .actions-toolbar > .secondary .btn-group-vertical > .action.primary + a.action:not(.primary),
+  .actions-toolbar > .secondary .btn-group-vertical > .action.secondary + a.action:not(.primary), .btn-group-vertical > .btn + .action.primary, .actions-toolbar > .primary .btn-group-vertical > a.action:not(.primary) + .action.primary,
+  .actions-toolbar > .secondary .btn-group-vertical > a.action:not(.primary) + .action.primary, .btn-group-vertical > .action.primary + .action.primary, .btn-group-vertical > .action.secondary + .action.primary, .btn-group-vertical > .btn + .action.secondary, .actions-toolbar > .primary .btn-group-vertical > a.action:not(.primary) + .action.secondary,
+  .actions-toolbar > .secondary .btn-group-vertical > a.action:not(.primary) + .action.secondary, .btn-group-vertical > .action.primary + .action.secondary, .btn-group-vertical > .action.secondary + .action.secondary,
+  .btn-group-vertical > .btn + .btn-group, .actions-toolbar > .primary
+  .btn-group-vertical > a.action:not(.primary) + .btn-group,
+  .actions-toolbar > .secondary
+  .btn-group-vertical > a.action:not(.primary) + .btn-group,
+  .btn-group-vertical > .action.primary + .btn-group,
+  .btn-group-vertical > .action.secondary + .btn-group,
+  .btn-group-vertical > .btn-group + .btn, .actions-toolbar > .primary
+  .btn-group-vertical > .btn-group + a.action:not(.primary),
+  .actions-toolbar > .secondary
+  .btn-group-vertical > .btn-group + a.action:not(.primary),
+  .btn-group-vertical > .btn-group + .action.primary,
+  .btn-group-vertical > .btn-group + .action.secondary,
   .btn-group-vertical > .btn-group + .btn-group {
     margin-top: -1px;
     margin-left: 0; }
 
-.btn-group-vertical > .btn:not(:first-child):not(:last-child) {
+.btn-group-vertical > .btn:not(:first-child):not(:last-child), .actions-toolbar > .primary .btn-group-vertical > a.action:not(:first-child):not(:last-child):not(.primary),
+.actions-toolbar > .secondary .btn-group-vertical > a.action:not(:first-child):not(:last-child):not(.primary), .btn-group-vertical > .action.primary:not(:first-child):not(:last-child), .btn-group-vertical > .action.secondary:not(:first-child):not(:last-child) {
   border-radius: 0; }
 
-.btn-group-vertical > .btn:first-child:not(:last-child) {
+.btn-group-vertical > .btn:first-child:not(:last-child), .actions-toolbar > .primary .btn-group-vertical > a.action:first-child:not(:last-child):not(.primary),
+.actions-toolbar > .secondary .btn-group-vertical > a.action:first-child:not(:last-child):not(.primary), .btn-group-vertical > .action.primary:first-child:not(:last-child), .btn-group-vertical > .action.secondary:first-child:not(:last-child) {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn:last-child:not(:first-child) {
+.btn-group-vertical > .btn:last-child:not(:first-child), .actions-toolbar > .primary .btn-group-vertical > a.action:last-child:not(:first-child):not(.primary),
+.actions-toolbar > .secondary .btn-group-vertical > a.action:last-child:not(:first-child):not(.primary), .btn-group-vertical > .action.primary:last-child:not(:first-child), .btn-group-vertical > .action.secondary:last-child:not(:first-child) {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn, .actions-toolbar > .primary .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > a.action:not(.primary),
+.actions-toolbar > .secondary .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > a.action:not(.primary), .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .action.primary, .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .action.secondary {
   border-radius: 0; }
 
-.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,
+.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child, .actions-toolbar > .primary .btn-group-vertical > .btn-group:first-child:not(:last-child) > a.action:last-child:not(.primary),
+.actions-toolbar > .secondary .btn-group-vertical > .btn-group:first-child:not(:last-child) > a.action:last-child:not(.primary), .btn-group-vertical > .btn-group:first-child:not(:last-child) > .action.primary:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > .action.secondary:last-child,
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child, .actions-toolbar > .primary .btn-group-vertical > .btn-group:last-child:not(:first-child) > a.action:first-child:not(.primary),
+.actions-toolbar > .secondary .btn-group-vertical > .btn-group:last-child:not(:first-child) > a.action:first-child:not(.primary), .btn-group-vertical > .btn-group:last-child:not(:first-child) > .action.primary:first-child, .btn-group-vertical > .btn-group:last-child:not(:first-child) > .action.secondary:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
-[data-toggle="buttons"] > .btn input[type="radio"],
-[data-toggle="buttons"] > .btn input[type="checkbox"],
-[data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
-[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
+[data-toggle="buttons"] > .btn input[type="radio"], .actions-toolbar > .primary [data-toggle="buttons"] > a.action:not(.primary) input[type="radio"],
+.actions-toolbar > .secondary [data-toggle="buttons"] > a.action:not(.primary) input[type="radio"], [data-toggle="buttons"] > .action.primary input[type="radio"], [data-toggle="buttons"] > .action.secondary input[type="radio"],
+[data-toggle="buttons"] > .btn input[type="checkbox"], .actions-toolbar > .primary
+[data-toggle="buttons"] > a.action:not(.primary) input[type="checkbox"],
+.actions-toolbar > .secondary
+[data-toggle="buttons"] > a.action:not(.primary) input[type="checkbox"],
+[data-toggle="buttons"] > .action.primary input[type="checkbox"],
+[data-toggle="buttons"] > .action.secondary input[type="checkbox"],
+[data-toggle="buttons"] > .btn-group > .btn input[type="radio"], .actions-toolbar > .primary
+[data-toggle="buttons"] > .btn-group > a.action:not(.primary) input[type="radio"],
+.actions-toolbar > .secondary
+[data-toggle="buttons"] > .btn-group > a.action:not(.primary) input[type="radio"],
+[data-toggle="buttons"] > .btn-group > .action.primary input[type="radio"],
+[data-toggle="buttons"] > .btn-group > .action.secondary input[type="radio"],
+[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"], .actions-toolbar > .primary
+[data-toggle="buttons"] > .btn-group > a.action:not(.primary) input[type="checkbox"],
+.actions-toolbar > .secondary
+[data-toggle="buttons"] > .btn-group > a.action:not(.primary) input[type="checkbox"],
+[data-toggle="buttons"] > .btn-group > .action.primary input[type="checkbox"],
+[data-toggle="buttons"] > .btn-group > .action.secondary input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none; }
@@ -2346,13 +2610,23 @@ tbody.collapse.show {
   border-radius: 0.25rem; }
   .input-group-addon.form-control-sm,
   .input-group-sm > .input-group-addon,
-  .input-group-sm > .input-group-btn > .input-group-addon.btn {
+  .input-group-sm > .input-group-btn > .input-group-addon.btn, .actions-toolbar > .primary
+  .input-group-sm > .input-group-btn > a.input-group-addon.action:not(.primary),
+  .actions-toolbar > .secondary
+  .input-group-sm > .input-group-btn > a.input-group-addon.action:not(.primary),
+  .input-group-sm > .input-group-btn > .input-group-addon.action.primary,
+  .input-group-sm > .input-group-btn > .input-group-addon.action.secondary {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
     border-radius: 0.2rem; }
   .input-group-addon.form-control-lg,
   .input-group-lg > .input-group-addon,
-  .input-group-lg > .input-group-btn > .input-group-addon.btn {
+  .input-group-lg > .input-group-btn > .input-group-addon.btn, .actions-toolbar > .primary
+  .input-group-lg > .input-group-btn > a.input-group-addon.action:not(.primary),
+  .actions-toolbar > .secondary
+  .input-group-lg > .input-group-btn > a.input-group-addon.action:not(.primary),
+  .input-group-lg > .input-group-btn > .input-group-addon.action.primary,
+  .input-group-lg > .input-group-btn > .input-group-addon.action.secondary {
     padding: 0.75rem 1.5rem;
     font-size: 1.25rem;
     border-radius: 0.3rem; }
@@ -2362,11 +2636,31 @@ tbody.collapse.show {
 
 .input-group .form-control:not(:last-child),
 .input-group-addon:not(:last-child),
-.input-group-btn:not(:last-child) > .btn,
-.input-group-btn:not(:last-child) > .btn-group > .btn,
+.input-group-btn:not(:last-child) > .btn, .actions-toolbar > .primary
+.input-group-btn:not(:last-child) > a.action:not(.primary),
+.actions-toolbar > .secondary
+.input-group-btn:not(:last-child) > a.action:not(.primary),
+.input-group-btn:not(:last-child) > .action.primary,
+.input-group-btn:not(:last-child) > .action.secondary,
+.input-group-btn:not(:last-child) > .btn-group > .btn, .actions-toolbar > .primary
+.input-group-btn:not(:last-child) > .btn-group > a.action:not(.primary),
+.actions-toolbar > .secondary
+.input-group-btn:not(:last-child) > .btn-group > a.action:not(.primary),
+.input-group-btn:not(:last-child) > .btn-group > .action.primary,
+.input-group-btn:not(:last-child) > .btn-group > .action.secondary,
 .input-group-btn:not(:last-child) > .dropdown-toggle,
-.input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
+.input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle), .actions-toolbar > .primary
+.input-group-btn:not(:first-child) > a.action:not(:last-child):not(.dropdown-toggle):not(.primary),
+.actions-toolbar > .secondary
+.input-group-btn:not(:first-child) > a.action:not(:last-child):not(.dropdown-toggle):not(.primary),
+.input-group-btn:not(:first-child) > .action.primary:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:not(:first-child) > .action.secondary:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn, .actions-toolbar > .primary
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > a.action:not(.primary),
+.actions-toolbar > .secondary
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > a.action:not(.primary),
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .action.primary,
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .action.secondary {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
@@ -2375,11 +2669,31 @@ tbody.collapse.show {
 
 .input-group .form-control:not(:first-child),
 .input-group-addon:not(:first-child),
-.input-group-btn:not(:first-child) > .btn,
-.input-group-btn:not(:first-child) > .btn-group > .btn,
+.input-group-btn:not(:first-child) > .btn, .actions-toolbar > .primary
+.input-group-btn:not(:first-child) > a.action:not(.primary),
+.actions-toolbar > .secondary
+.input-group-btn:not(:first-child) > a.action:not(.primary),
+.input-group-btn:not(:first-child) > .action.primary,
+.input-group-btn:not(:first-child) > .action.secondary,
+.input-group-btn:not(:first-child) > .btn-group > .btn, .actions-toolbar > .primary
+.input-group-btn:not(:first-child) > .btn-group > a.action:not(.primary),
+.actions-toolbar > .secondary
+.input-group-btn:not(:first-child) > .btn-group > a.action:not(.primary),
+.input-group-btn:not(:first-child) > .btn-group > .action.primary,
+.input-group-btn:not(:first-child) > .btn-group > .action.secondary,
 .input-group-btn:not(:first-child) > .dropdown-toggle,
-.input-group-btn:not(:last-child) > .btn:not(:first-child),
-.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
+.input-group-btn:not(:last-child) > .btn:not(:first-child), .actions-toolbar > .primary
+.input-group-btn:not(:last-child) > a.action:not(:first-child):not(.primary),
+.actions-toolbar > .secondary
+.input-group-btn:not(:last-child) > a.action:not(:first-child):not(.primary),
+.input-group-btn:not(:last-child) > .action.primary:not(:first-child),
+.input-group-btn:not(:last-child) > .action.secondary:not(:first-child),
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn, .actions-toolbar > .primary
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > a.action:not(.primary),
+.actions-toolbar > .secondary
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > a.action:not(.primary),
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .action.primary,
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .action.secondary {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
@@ -2390,21 +2704,38 @@ tbody.collapse.show {
   position: relative;
   font-size: 0;
   white-space: nowrap; }
-  .input-group-btn > .btn {
+  .input-group-btn > .btn, .actions-toolbar > .primary .input-group-btn > a.action:not(.primary),
+  .actions-toolbar > .secondary .input-group-btn > a.action:not(.primary), .input-group-btn > .action.primary, .input-group-btn > .action.secondary {
     position: relative;
     flex: 1; }
-    .input-group-btn > .btn + .btn {
+    .input-group-btn > .btn + .btn, .actions-toolbar > .primary .input-group-btn > a.action:not(.primary) + .btn,
+    .actions-toolbar > .secondary .input-group-btn > a.action:not(.primary) + .btn, .input-group-btn > .action.primary + .btn, .input-group-btn > .action.secondary + .btn, .actions-toolbar > .primary .input-group-btn > .btn + a.action:not(.primary), .actions-toolbar > .primary .input-group-btn > a.action:not(.primary) + a.action:not(.primary), .actions-toolbar > .primary .input-group-btn > .action.primary + a.action:not(.primary), .actions-toolbar > .primary .input-group-btn > .action.secondary + a.action:not(.primary),
+    .actions-toolbar > .secondary .input-group-btn > .btn + a.action:not(.primary), .actions-toolbar > .primary
+    .actions-toolbar > .secondary .input-group-btn > a.action:not(.primary) + a.action:not(.primary),
+    .actions-toolbar > .secondary .actions-toolbar > .primary .input-group-btn > a.action:not(.primary) + a.action:not(.primary), .actions-toolbar > .secondary .input-group-btn > a.action:not(.primary) + a.action:not(.primary),
+    .actions-toolbar > .secondary .input-group-btn > .action.primary + a.action:not(.primary),
+    .actions-toolbar > .secondary .input-group-btn > .action.secondary + a.action:not(.primary), .input-group-btn > .btn + .action.primary, .actions-toolbar > .primary .input-group-btn > a.action:not(.primary) + .action.primary,
+    .actions-toolbar > .secondary .input-group-btn > a.action:not(.primary) + .action.primary, .input-group-btn > .action.primary + .action.primary, .input-group-btn > .action.secondary + .action.primary, .input-group-btn > .btn + .action.secondary, .actions-toolbar > .primary .input-group-btn > a.action:not(.primary) + .action.secondary,
+    .actions-toolbar > .secondary .input-group-btn > a.action:not(.primary) + .action.secondary, .input-group-btn > .action.primary + .action.secondary, .input-group-btn > .action.secondary + .action.secondary {
       margin-left: -1px; }
-    .input-group-btn > .btn:focus, .input-group-btn > .btn:active, .input-group-btn > .btn:hover {
+    .input-group-btn > .btn:focus, .actions-toolbar > .primary .input-group-btn > a.action:focus:not(.primary),
+    .actions-toolbar > .secondary .input-group-btn > a.action:focus:not(.primary), .input-group-btn > .action.primary:focus, .input-group-btn > .action.secondary:focus, .input-group-btn > .btn:active, .actions-toolbar > .primary .input-group-btn > a.action:active:not(.primary),
+    .actions-toolbar > .secondary .input-group-btn > a.action:active:not(.primary), .input-group-btn > .action.primary:active, .input-group-btn > .action.secondary:active, .input-group-btn > .btn:hover, .actions-toolbar > .primary .input-group-btn > a.action:hover:not(.primary),
+    .actions-toolbar > .secondary .input-group-btn > a.action:hover:not(.primary), .input-group-btn > .action.primary:hover, .input-group-btn > .action.secondary:hover {
       z-index: 3; }
-  .input-group-btn:not(:last-child) > .btn,
+  .input-group-btn:not(:last-child) > .btn, .actions-toolbar > .primary .input-group-btn:not(:last-child) > a.action:not(.primary),
+  .actions-toolbar > .secondary .input-group-btn:not(:last-child) > a.action:not(.primary), .input-group-btn:not(:last-child) > .action.primary, .input-group-btn:not(:last-child) > .action.secondary,
   .input-group-btn:not(:last-child) > .btn-group {
     margin-right: -1px; }
-  .input-group-btn:not(:first-child) > .btn,
+  .input-group-btn:not(:first-child) > .btn, .actions-toolbar > .primary .input-group-btn:not(:first-child) > a.action:not(.primary),
+  .actions-toolbar > .secondary .input-group-btn:not(:first-child) > a.action:not(.primary), .input-group-btn:not(:first-child) > .action.primary, .input-group-btn:not(:first-child) > .action.secondary,
   .input-group-btn:not(:first-child) > .btn-group {
     z-index: 2;
     margin-left: -1px; }
-    .input-group-btn:not(:first-child) > .btn:focus, .input-group-btn:not(:first-child) > .btn:active, .input-group-btn:not(:first-child) > .btn:hover,
+    .input-group-btn:not(:first-child) > .btn:focus, .actions-toolbar > .primary .input-group-btn:not(:first-child) > a.action:focus:not(.primary),
+    .actions-toolbar > .secondary .input-group-btn:not(:first-child) > a.action:focus:not(.primary), .input-group-btn:not(:first-child) > .action.primary:focus, .input-group-btn:not(:first-child) > .action.secondary:focus, .input-group-btn:not(:first-child) > .btn:active, .actions-toolbar > .primary .input-group-btn:not(:first-child) > a.action:active:not(.primary),
+    .actions-toolbar > .secondary .input-group-btn:not(:first-child) > a.action:active:not(.primary), .input-group-btn:not(:first-child) > .action.primary:active, .input-group-btn:not(:first-child) > .action.secondary:active, .input-group-btn:not(:first-child) > .btn:hover, .actions-toolbar > .primary .input-group-btn:not(:first-child) > a.action:hover:not(.primary),
+    .actions-toolbar > .secondary .input-group-btn:not(:first-child) > a.action:hover:not(.primary), .input-group-btn:not(:first-child) > .action.primary:hover, .input-group-btn:not(:first-child) > .action.secondary:hover,
     .input-group-btn:not(:first-child) > .btn-group:focus,
     .input-group-btn:not(:first-child) > .btn-group:active,
     .input-group-btn:not(:first-child) > .btn-group:hover {
@@ -2586,7 +2917,7 @@ tbody.collapse.show {
       color: #636c72;
       background-color: transparent;
       border-color: transparent; }
-  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-link.active, .nav-tabs .breadcrumbs .items .nav-link.item:last-child, .breadcrumbs .items .nav-tabs .nav-link.item:last-child,
   .nav-tabs .nav-item.show .nav-link {
     color: #464a4c;
     background-color: #fff;
@@ -2599,7 +2930,7 @@ tbody.collapse.show {
 .nav-pills .nav-link {
   border-radius: 0.25rem; }
 
-.nav-pills .nav-link.active,
+.nav-pills .nav-link.active, .nav-pills .breadcrumbs .items .nav-link.item:last-child, .breadcrumbs .items .nav-pills .nav-link.item:last-child,
 .nav-pills .nav-item.show .nav-link {
   color: #fff;
   cursor: default;
@@ -2616,7 +2947,7 @@ tbody.collapse.show {
 .tab-content > .tab-pane {
   display: none; }
 
-.tab-content > .active {
+.tab-content > .active, .breadcrumbs .items .tab-content > .item:last-child {
   display: block; }
 
 .navbar {
@@ -2833,8 +3164,12 @@ tbody.collapse.show {
 
 .navbar-light .navbar-nav .open > .nav-link,
 .navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .breadcrumbs .items .item:last-child > .nav-link, .breadcrumbs .items
+.navbar-light .navbar-nav .item:last-child > .nav-link,
 .navbar-light .navbar-nav .nav-link.open,
-.navbar-light .navbar-nav .nav-link.active {
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .breadcrumbs .items .nav-link.item:last-child, .breadcrumbs .items
+.navbar-light .navbar-nav .nav-link.item:last-child {
   color: rgba(0, 0, 0, 0.9); }
 
 .navbar-light .navbar-toggler {
@@ -2863,8 +3198,12 @@ tbody.collapse.show {
 
 .navbar-inverse .navbar-nav .open > .nav-link,
 .navbar-inverse .navbar-nav .active > .nav-link,
+.navbar-inverse .navbar-nav .breadcrumbs .items .item:last-child > .nav-link, .breadcrumbs .items
+.navbar-inverse .navbar-nav .item:last-child > .nav-link,
 .navbar-inverse .navbar-nav .nav-link.open,
-.navbar-inverse .navbar-nav .nav-link.active {
+.navbar-inverse .navbar-nav .nav-link.active,
+.navbar-inverse .navbar-nav .breadcrumbs .items .nav-link.item:last-child, .breadcrumbs .items
+.navbar-inverse .navbar-nav .nav-link.item:last-child {
   color: white; }
 
 .navbar-inverse .navbar-toggler {
@@ -3090,30 +3429,30 @@ tbody.collapse.show {
       width: 100%;
       margin-bottom: 0.75rem; } }
 
-.breadcrumb {
+.breadcrumb, .breadcrumbs .items {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
   background-color: #eceeef;
   border-radius: 0.25rem; }
-  .breadcrumb::after {
+  .breadcrumb::after, .breadcrumbs .items::after {
     display: block;
     content: "";
     clear: both; }
 
-.breadcrumb-item {
+.breadcrumb-item, .breadcrumbs .items .item {
   float: left; }
-  .breadcrumb-item + .breadcrumb-item::before {
+  .breadcrumb-item + .breadcrumb-item::before, .breadcrumbs .items .item + .breadcrumb-item::before, .breadcrumbs .items .breadcrumb-item + .item::before, .breadcrumbs .items .item + .item::before {
     display: inline-block;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
     color: #636c72;
     content: "/"; }
-  .breadcrumb-item + .breadcrumb-item:hover::before {
+  .breadcrumb-item + .breadcrumb-item:hover::before, .breadcrumbs .items .item + .breadcrumb-item:hover::before, .breadcrumbs .items .breadcrumb-item + .item:hover::before, .breadcrumbs .items .item + .item:hover::before {
     text-decoration: underline; }
-  .breadcrumb-item + .breadcrumb-item:hover::before {
+  .breadcrumb-item + .breadcrumb-item:hover::before, .breadcrumbs .items .item + .breadcrumb-item:hover::before, .breadcrumbs .items .breadcrumb-item + .item:hover::before, .breadcrumbs .items .item + .item:hover::before {
     text-decoration: none; }
-  .breadcrumb-item.active {
+  .breadcrumb-item.active, .breadcrumbs .items .active.item, .breadcrumbs .items .item:last-child {
     color: #636c72; }
 
 .pagination {
@@ -3131,7 +3470,7 @@ tbody.collapse.show {
   border-bottom-right-radius: 0.25rem;
   border-top-right-radius: 0.25rem; }
 
-.page-item.active .page-link {
+.page-item.active .page-link, .breadcrumbs .items .page-item.item:last-child .page-link {
   z-index: 2;
   color: #fff;
   background-color: #0275d8;
@@ -3197,7 +3536,8 @@ tbody.collapse.show {
   .badge:empty {
     display: none; }
 
-.btn .badge {
+.btn .badge, .actions-toolbar > .primary a.action:not(.primary) .badge,
+.actions-toolbar > .secondary a.action:not(.primary) .badge, .action.primary .badge, .action.secondary .badge {
   position: relative;
   top: -1px; }
 
@@ -3393,16 +3733,16 @@ a.badge:focus, a.badge:hover {
       color: inherit; }
     .list-group-item.disabled .list-group-item-text, .list-group-item:disabled .list-group-item-text {
       color: #636c72; }
-  .list-group-item.active {
+  .list-group-item.active, .breadcrumbs .items .list-group-item.item:last-child {
     z-index: 2;
     color: #fff;
     background-color: #0275d8;
     border-color: #0275d8; }
-    .list-group-item.active .list-group-item-heading,
-    .list-group-item.active .list-group-item-heading > small,
-    .list-group-item.active .list-group-item-heading > .small {
+    .list-group-item.active .list-group-item-heading, .breadcrumbs .items .list-group-item.item:last-child .list-group-item-heading,
+    .list-group-item.active .list-group-item-heading > small, .breadcrumbs .items .list-group-item.item:last-child .list-group-item-heading > small,
+    .list-group-item.active .list-group-item-heading > .small, .breadcrumbs .items .list-group-item.item:last-child .list-group-item-heading > .small {
       color: inherit; }
-    .list-group-item.active .list-group-item-text {
+    .list-group-item.active .list-group-item-text, .breadcrumbs .items .list-group-item.item:last-child .list-group-item-text {
       color: #daeeff; }
 
 .list-group-flush .list-group-item {
@@ -3431,8 +3771,9 @@ button.list-group-item-success {
   button.list-group-item-success:hover {
     color: #3c763d;
     background-color: #d0e9c6; }
-  a.list-group-item-success.active,
-  button.list-group-item-success.active {
+  a.list-group-item-success.active, .breadcrumbs .items a.list-group-item-success.item:last-child,
+  button.list-group-item-success.active,
+  .breadcrumbs .items button.list-group-item-success.item:last-child {
     color: #fff;
     background-color: #3c763d;
     border-color: #3c763d; }
@@ -3452,8 +3793,9 @@ button.list-group-item-info {
   button.list-group-item-info:hover {
     color: #31708f;
     background-color: #c4e3f3; }
-  a.list-group-item-info.active,
-  button.list-group-item-info.active {
+  a.list-group-item-info.active, .breadcrumbs .items a.list-group-item-info.item:last-child,
+  button.list-group-item-info.active,
+  .breadcrumbs .items button.list-group-item-info.item:last-child {
     color: #fff;
     background-color: #31708f;
     border-color: #31708f; }
@@ -3473,8 +3815,9 @@ button.list-group-item-warning {
   button.list-group-item-warning:hover {
     color: #8a6d3b;
     background-color: #faf2cc; }
-  a.list-group-item-warning.active,
-  button.list-group-item-warning.active {
+  a.list-group-item-warning.active, .breadcrumbs .items a.list-group-item-warning.item:last-child,
+  button.list-group-item-warning.active,
+  .breadcrumbs .items button.list-group-item-warning.item:last-child {
     color: #fff;
     background-color: #8a6d3b;
     border-color: #8a6d3b; }
@@ -3494,8 +3837,9 @@ button.list-group-item-danger {
   button.list-group-item-danger:hover {
     color: #a94442;
     background-color: #ebcccc; }
-  a.list-group-item-danger.active,
-  button.list-group-item-danger.active {
+  a.list-group-item-danger.active, .breadcrumbs .items a.list-group-item-danger.item:last-child,
+  button.list-group-item-danger.active,
+  .breadcrumbs .items button.list-group-item-danger.item:last-child {
     color: #fff;
     background-color: #a94442;
     border-color: #a94442; }
@@ -3873,7 +4217,7 @@ button.close {
       backface-visibility: hidden;
       perspective: 1000px; } }
 
-.carousel-item.active,
+.carousel-item.active, .breadcrumbs .items .carousel-item.item:last-child,
 .carousel-item-next,
 .carousel-item-prev {
   display: flex; }
@@ -3888,10 +4232,12 @@ button.close {
   .carousel-item-prev.carousel-item-right {
     transform: translate3d(0, 0, 0); }
   .carousel-item-next,
-  .active.carousel-item-right {
+  .active.carousel-item-right,
+  .breadcrumbs .items .carousel-item-right.item:last-child {
     transform: translate3d(100%, 0, 0); }
   .carousel-item-prev,
-  .active.carousel-item-left {
+  .active.carousel-item-left,
+  .breadcrumbs .items .carousel-item-left.item:last-child {
     transform: translate3d(-100%, 0, 0); } }
 
 @supports (transform: translate3d(0, 0, 0)) {
@@ -3899,10 +4245,12 @@ button.close {
   .carousel-item-prev.carousel-item-right {
     transform: translate3d(0, 0, 0); }
   .carousel-item-next,
-  .active.carousel-item-right {
+  .active.carousel-item-right,
+  .breadcrumbs .items .carousel-item-right.item:last-child {
     transform: translate3d(100%, 0, 0); }
   .carousel-item-prev,
-  .active.carousel-item-left {
+  .active.carousel-item-left,
+  .breadcrumbs .items .carousel-item-left.item:last-child {
     transform: translate3d(-100%, 0, 0); } }
 
 .carousel-control-prev,
@@ -3983,7 +4331,7 @@ button.close {
       width: 100%;
       height: 10px;
       content: ""; }
-  .carousel-indicators .active {
+  .carousel-indicators .active, .carousel-indicators .breadcrumbs .items .item:last-child, .breadcrumbs .items .carousel-indicators .item:last-child {
     background-color: #fff; }
 
 .carousel-caption {
@@ -5986,3 +6334,112 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+.actions-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px; }
+  @media (min-width: 576px) {
+    .actions-toolbar {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 768px) {
+    .actions-toolbar {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 992px) {
+    .actions-toolbar {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 1200px) {
+    .actions-toolbar {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  .actions-toolbar > .primary,
+  .actions-toolbar > .secondary {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 100%;
+    max-width: 100%; }
+    @media (min-width: 576px) {
+      .actions-toolbar > .primary,
+      .actions-toolbar > .secondary {
+        padding-right: 15px;
+        padding-left: 15px; } }
+    @media (min-width: 768px) {
+      .actions-toolbar > .primary,
+      .actions-toolbar > .secondary {
+        padding-right: 15px;
+        padding-left: 15px; } }
+    @media (min-width: 992px) {
+      .actions-toolbar > .primary,
+      .actions-toolbar > .secondary {
+        padding-right: 15px;
+        padding-left: 15px; } }
+    @media (min-width: 1200px) {
+      .actions-toolbar > .primary,
+      .actions-toolbar > .secondary {
+        padding-right: 15px;
+        padding-left: 15px; } }
+    @media (min-width: 576px) {
+      .actions-toolbar > .primary,
+      .actions-toolbar > .secondary {
+        flex: 0 0 50%;
+        max-width: 50%; } }
+    @media (min-width: 1200px) {
+      .actions-toolbar > .primary,
+      .actions-toolbar > .secondary {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%; } }
+  .actions-toolbar > .primary {
+    order: 1; }
+    @media (min-width: 1200px) {
+      .actions-toolbar > .primary {
+        margin-left: 33.33333%; } }
+
+.breadcrumbs .items .item strong {
+  font-weight: inherit; }
+
+.action.primary {
+  color: #fff;
+  background-color: #0275d8;
+  border-color: #0275d8; }
+  .action.primary:hover {
+    color: #fff;
+    background-color: #025aa5;
+    border-color: #01549b; }
+  .action.primary:focus, .action.primary.focus {
+    box-shadow: 0 0 0 2px rgba(2, 117, 216, 0.5); }
+  .action.primary.disabled, .action.primary:disabled {
+    background-color: #0275d8;
+    border-color: #0275d8; }
+  .action.primary:active, .action.primary.active, .breadcrumbs .items .action.primary.item:last-child,
+  .show > .action.primary.dropdown-toggle {
+    color: #fff;
+    background-color: #025aa5;
+    background-image: none;
+    border-color: #01549b; }
+
+.action.secondary {
+  color: #292b2c;
+  background-color: #fff;
+  border-color: #ccc; }
+  .action.secondary:hover {
+    color: #292b2c;
+    background-color: #e6e6e6;
+    border-color: #adadad; }
+  .action.secondary:focus, .action.secondary.focus {
+    box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5); }
+  .action.secondary.disabled, .action.secondary:disabled {
+    background-color: #fff;
+    border-color: #ccc; }
+  .action.secondary:active, .action.secondary.active, .breadcrumbs .items .action.secondary.item:last-child,
+  .show > .action.secondary.dropdown-toggle {
+    color: #292b2c;
+    background-color: #e6e6e6;
+    background-image: none;
+    border-color: #adadad; }

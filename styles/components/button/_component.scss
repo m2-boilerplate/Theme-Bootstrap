@@ -1,0 +1,9 @@
+a.action.primary {
+  @include magento-button-link();
+}
+.action.primary {
+  @include magento-button-primary();
+}
+.action.secondary {
+  @include magento-button-secondary();
+}
