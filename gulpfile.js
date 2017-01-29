@@ -17,7 +17,7 @@ fractal.set('project.title', 'Magento 2 Boilerplate Theme'); // title for the pr
 fractal.set('project.version', `v${git.tag()} (${git.short()})`);
 fractal.set('project.author', 'Thomas Hampe');
 
-fractal.web.set('builder.dest', `${__dirname}/_documentation`); // destination for the static export
+fractal.web.set('builder.dest', `${__dirname}/_documentation/tmp`); // destination for the static export
 fractal.docs.set('path', `${__dirname}/styles/documentation`); // location of the documentation directory.
 fractal.components.set('path', `${__dirname}/styles/components`); // location of the component directory.
 fractal.web.set('static.path', `${__dirname}/web`);

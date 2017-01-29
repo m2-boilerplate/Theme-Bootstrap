@@ -35,6 +35,9 @@ doCompile
 
 # Now let's go have some fun with the cloned repo
 cd _documentation
+cp -rf tmp/* .
+rm -rf tmp
+
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
