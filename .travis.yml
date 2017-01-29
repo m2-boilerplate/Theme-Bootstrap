@@ -11,7 +11,8 @@ cache:
 script:
   gulp test
 after_success:
-  bash ./deploy.sh
+  - chmod a+x deploy.sh
+  - ./deploy.sh
 env:
   global:
   - ENCRYPTION_LABEL: "5e22eff332c7"
