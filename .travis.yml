@@ -10,3 +10,9 @@ cache:
     - node_modules
 script:
   gulp test
+after_success:
+  bash ./deploy.sh
+env:
+  global:
+  - ENCRYPTION_LABEL: "5e22eff332c7"
+  - COMMIT_AUTHOR_EMAIL: "m2-boilerplate@hampe.co"
