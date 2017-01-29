@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "4"
+  - "6"
+before_script:
+  - yarn global add gulp
+cache:
+  yarn: true
+  directories:
+    - node_modules
+script:
+  gulp test
