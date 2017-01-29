@@ -20,7 +20,7 @@ REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 
-# Clone the existing gh-pages for this repo into out/
+# Clone the existing gh-pages for this repo into _documentation/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
 git clone $REPO _documentation
 cd _documentation
@@ -34,7 +34,7 @@ rm -rf _documentation/**/* || exit 0
 doCompile
 
 # Now let's go have some fun with the cloned repo
-cd out
+cd _documentation
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
