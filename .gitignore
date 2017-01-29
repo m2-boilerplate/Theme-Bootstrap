@@ -1,0 +1,9 @@
+node_modules
+.sass-cache
+
+# OS or Editor folders
+.DS_Store
+.idea
+
+# Ignore generated documentation
+_documentation
