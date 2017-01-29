@@ -11,6 +11,8 @@ cache:
 script:
   gulp test
 after_success:
+  - ls -la
+  - pwd
   - chmod a+x deploy.sh
   - ./deploy.sh
 env:
