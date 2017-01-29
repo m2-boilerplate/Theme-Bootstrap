@@ -13,8 +13,9 @@ const gulp = require('gulp');
 const fractal = require('@frctl/fractal').create();
 const git = require('git-rev-sync');
 
-fractal.set('project.title', 'Magento 2 Boilerplate Theme'); // title for the project
-fractal.set('project.version', `v${git.tag()} (${git.short()})`);
+const version = `v${git.tag()} (${git.short()})`;
+fractal.set('project.title', `Magento 2 Boilerplate Theme - ${version}`); // title for the project
+fractal.set('project.version', version);
 fractal.set('project.author', 'Thomas Hampe');
 
 fractal.web.set('builder.dest', `${__dirname}/_documentation/tmp`); // destination for the static export
