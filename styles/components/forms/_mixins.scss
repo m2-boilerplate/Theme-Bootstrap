@@ -1,0 +1,104 @@
+@mixin magento-form-field() {
+  &.choice {
+    @extend .form-check;
+    @extend .form-check-label;
+  }
+  &:not(.choice) {
+    @extend .form-group;
+  }
+}
+
+@mixin magento-form-field-required() {
+  label, .label {
+    &:after {
+      content: '*';
+      color: $brand-danger;
+      margin-left: 5px;
+    }
+  }
+}
+
+@mixin magento-form-element-validation() {
+  &.mage-error {
+    @extend .form-control-warning;
+    &[type="text"]  {
+      background-image: $form-icon-danger;
+    }
+    border-color: $brand-danger;
+    @if $enable-rounded {
+      &:focus {
+        box-shadow: $input-box-shadow, 0 0 6px lighten($brand-danger, 20%);
+      }
+    }
+  }
+
+  &.valid {
+    @extend .form-control-success;
+    &[type="text"]  {
+      background-image: $form-icon-success;
+    }
+    border-color: $brand-success;
+    @if $enable-rounded {
+      &:focus {
+        box-shadow: $input-box-shadow, 0 0 6px lighten($brand-success, 20%);
+      }
+    }
+  }
+}
+
+@mixin magento-form-element() {
+
+  &:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+    @extend .form-control;
+    @include magento-form-element-validation();
+  }
+
+  &[type="checkbox"], &[type="radio"] {
+    @extend .form-check-input;
+    @include magento-form-element-validation();
+  }
+
+  &[type="file"] {
+    @extend .form-control-file;
+    @include magento-form-element-validation();
+  }
+
+}
+
+
+
+@mixin magento-form-element-validation-note() {
+  color: $brand-danger;
+  @extend .form-control-feedback;
+}
+
+@mixin magento-form-field-note() {
+  @extend .form-text;
+  @extend .text-muted;
+  @extend small;
+}
+
+@mixin magento-form-field-group() {
+  @include make-row();
+  .field {
+    @include make-col-ready();
+    @include make-col($grid-columns);
+  }
+  @include media-breakpoint-up(md) {
+    &.group-2 .field {
+      @include make-col($grid-columns/2);
+    }
+
+    &.group-3 .field {
+      @include make-col($grid-columns/3);
+    }
+
+    &.group-4 .field {
+      @include make-col($grid-columns/4);
+    }
+
+    &.group-5 .field {
+      @include make-col($grid-columns/5);
+    }
+  }
+}

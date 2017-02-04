@@ -77,7 +77,7 @@ mark {
   background-color: #ff0;
   color: #000; }
 
-small {
+small, .field .note {
   font-size: 80%; }
 
 sub,
@@ -144,7 +144,7 @@ button:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText; }
 
-fieldset {
+fieldset, .fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em; }
@@ -399,7 +399,7 @@ input[type="month"] {
 textarea {
   resize: vertical; }
 
-fieldset {
+fieldset, .fieldset {
   min-width: 0;
   padding: 0;
   margin: 0;
@@ -478,7 +478,7 @@ hr {
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
 
-small,
+small, .field .note,
 .small {
   font-size: 80%;
   font-weight: normal; }
@@ -1484,7 +1484,10 @@ pre {
   .table-responsive.table-bordered {
     border: 0; }
 
-.form-control {
+.form-control, .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
   display: block;
   width: 100%;
   padding: 0.5rem 0.75rem;
@@ -1497,31 +1500,54 @@ pre {
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
-  .form-control::-ms-expand {
+  .form-control::-ms-expand, .input-text:not([type="file"]):not([type="radio"]):not([type="checkbox"])::-ms-expand,
+  .field input:not([type="file"]):not([type="radio"]):not([type="checkbox"])::-ms-expand,
+  .field select:not([type="file"]):not([type="radio"]):not([type="checkbox"])::-ms-expand,
+  .field textarea:not([type="file"]):not([type="radio"]):not([type="checkbox"])::-ms-expand {
     background-color: transparent;
     border: 0; }
-  .form-control:focus {
+  .form-control:focus, .input-text:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field input:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field select:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field textarea:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
     color: #464a4c;
     background-color: #fff;
     border-color: #5cb3fd;
     outline: none; }
-  .form-control::placeholder {
+  .form-control::placeholder, .input-text:not([type="file"]):not([type="radio"]):not([type="checkbox"])::placeholder,
+  .field input:not([type="file"]):not([type="radio"]):not([type="checkbox"])::placeholder,
+  .field select:not([type="file"]):not([type="radio"]):not([type="checkbox"])::placeholder,
+  .field textarea:not([type="file"]):not([type="radio"]):not([type="checkbox"])::placeholder {
     color: #636c72;
     opacity: 1; }
-  .form-control:disabled, .form-control[readonly] {
+  .form-control:disabled, .input-text:disabled:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field input:disabled:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field select:disabled:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field textarea:disabled:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .form-control[readonly], [readonly].input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field input[readonly]:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field select[readonly]:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field textarea[readonly]:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
     background-color: #eceeef;
     opacity: 1; }
-  .form-control:disabled {
+  .form-control:disabled, .input-text:disabled:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field input:disabled:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field select:disabled:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field textarea:disabled:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
     cursor: not-allowed; }
 
-select.form-control:not([size]):not([multiple]) {
+select.form-control:not([size]):not([multiple]), select.input-text:not([size]):not([multiple]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field select:not([size]):not([multiple]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
   height: calc(2.25rem + 2px); }
 
-select.form-control:focus::-ms-value {
+select.form-control:focus::-ms-value, select.input-text:not([type="file"]):not([type="radio"]):not([type="checkbox"]):focus::-ms-value,
+.field select:not([type="file"]):not([type="radio"]):not([type="checkbox"]):focus::-ms-value {
   color: #464a4c;
   background-color: #fff; }
 
-.form-control-file,
+.form-control-file, .input-text[type="file"],
+.field input[type="file"],
+.field select[type="file"],
+.field textarea[type="file"],
 .form-control-range {
   display: block; }
 
@@ -1553,14 +1579,20 @@ select.form-control:focus::-ms-value {
   line-height: 1.25;
   border: solid transparent;
   border-width: 1px 0; }
-  .form-control-static.form-control-sm, .input-group-sm > .form-control-static.form-control,
+  .form-control-static.form-control-sm, .input-group-sm > .form-control-static.form-control, .input-group-sm > .form-control-static.input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-sm > input.form-control-static:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-sm > select.form-control-static:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-sm > textarea.form-control-static:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
   .input-group-sm > .form-control-static.input-group-addon,
   .input-group-sm > .input-group-btn > .form-control-static.btn, .actions-toolbar > .primary
   .input-group-sm > .input-group-btn > a.form-control-static.action:not(.primary),
   .actions-toolbar > .secondary
   .input-group-sm > .input-group-btn > a.form-control-static.action:not(.primary),
   .input-group-sm > .input-group-btn > .form-control-static.action.primary,
-  .input-group-sm > .input-group-btn > .form-control-static.action.secondary, .form-control-static.form-control-lg, .input-group-lg > .form-control-static.form-control,
+  .input-group-sm > .input-group-btn > .form-control-static.action.secondary, .form-control-static.form-control-lg, .input-group-lg > .form-control-static.form-control, .input-group-lg > .form-control-static.input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-lg > input.form-control-static:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-lg > select.form-control-static:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-lg > textarea.form-control-static:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
   .input-group-lg > .form-control-static.input-group-addon,
   .input-group-lg > .input-group-btn > .form-control-static.btn, .actions-toolbar > .primary
   .input-group-lg > .input-group-btn > a.form-control-static.action:not(.primary),
@@ -1571,7 +1603,10 @@ select.form-control:focus::-ms-value {
     padding-right: 0;
     padding-left: 0; }
 
-.form-control-sm, .input-group-sm > .form-control,
+.form-control-sm, .input-group-sm > .form-control, .input-group-sm > .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group-sm > input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group-sm > select:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group-sm > textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn, .actions-toolbar > .primary
 .input-group-sm > .input-group-btn > a.action:not(.primary),
@@ -1583,14 +1618,18 @@ select.form-control:focus::-ms-value {
   font-size: 0.875rem;
   border-radius: 0.2rem; }
 
-select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]),
+select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]), .input-group-sm > select.input-text:not([size]):not([multiple]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group-sm > select:not([size]):not([multiple]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 .input-group-sm > select.input-group-addon:not([size]):not([multiple]),
 .input-group-sm > .input-group-btn > select.btn:not([size]):not([multiple]),
 .input-group-sm > .input-group-btn > select.action.primary:not([size]):not([multiple]),
 .input-group-sm > .input-group-btn > select.action.secondary:not([size]):not([multiple]) {
   height: 1.8125rem; }
 
-.form-control-lg, .input-group-lg > .form-control,
+.form-control-lg, .input-group-lg > .form-control, .input-group-lg > .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group-lg > input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group-lg > select:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group-lg > textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn, .actions-toolbar > .primary
 .input-group-lg > .input-group-btn > a.action:not(.primary),
@@ -1602,66 +1641,121 @@ select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.for
   font-size: 1.25rem;
   border-radius: 0.3rem; }
 
-select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]),
+select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]), .input-group-lg > select.input-text:not([size]):not([multiple]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group-lg > select:not([size]):not([multiple]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 .input-group-lg > select.input-group-addon:not([size]):not([multiple]),
 .input-group-lg > .input-group-btn > select.btn:not([size]):not([multiple]),
 .input-group-lg > .input-group-btn > select.action.primary:not([size]):not([multiple]),
 .input-group-lg > .input-group-btn > select.action.secondary:not([size]):not([multiple]) {
   height: 3.16667rem; }
 
-.form-group {
+.form-group, .field:not(.choice) {
   margin-bottom: 1rem; }
 
-.form-text {
+.form-text, .field .note {
   display: block;
   margin-top: 0.25rem; }
 
-.form-check {
+.form-check, .field.choice {
   position: relative;
   display: block;
   margin-bottom: 0.5rem; }
-  .form-check.disabled .form-check-label {
+  .form-check.disabled .form-check-label, .disabled.field.choice .form-check-label, .form-check.disabled .field.choice, .disabled.field.choice .field.choice {
     color: #636c72;
     cursor: not-allowed; }
 
-.form-check-label {
+.form-check-label, .field.choice {
   padding-left: 1.25rem;
   margin-bottom: 0;
   cursor: pointer; }
 
-.form-check-input {
+.form-check-input, .input-text[type="checkbox"], .input-text[type="radio"],
+.field input[type="checkbox"],
+.field input[type="radio"],
+.field select[type="checkbox"],
+.field select[type="radio"],
+.field textarea[type="checkbox"],
+.field textarea[type="radio"] {
   position: absolute;
   margin-top: 0.25rem;
   margin-left: -1.25rem; }
-  .form-check-input:only-child {
+  .form-check-input:only-child, .input-text[type="checkbox"]:only-child, .input-text[type="radio"]:only-child,
+  .field input[type="checkbox"]:only-child,
+  .field input[type="radio"]:only-child,
+  .field select[type="checkbox"]:only-child,
+  .field select[type="radio"]:only-child,
+  .field textarea[type="checkbox"]:only-child,
+  .field textarea[type="radio"]:only-child {
     position: static; }
 
 .form-check-inline {
   display: inline-block; }
-  .form-check-inline .form-check-label {
+  .form-check-inline .form-check-label, .form-check-inline .field.choice {
     vertical-align: middle; }
   .form-check-inline + .form-check-inline {
     margin-left: 0.75rem; }
 
-.form-control-feedback {
+.form-control-feedback, .field div.mage-error[generated] {
   margin-top: 0.25rem; }
 
-.form-control-success,
+.form-control-success, .input-text.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field input.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field select.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field textarea.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-text[type="checkbox"].valid, .input-text[type="radio"].valid,
+.field input[type="checkbox"].valid,
+.field input[type="radio"].valid,
+.field select[type="checkbox"].valid,
+.field select[type="radio"].valid,
+.field textarea[type="checkbox"].valid,
+.field textarea[type="radio"].valid, .input-text[type="file"].valid,
+.field input[type="file"].valid,
+.field select[type="file"].valid,
+.field textarea[type="file"].valid, .input-text.valid,
+.field input.valid,
+.field select.valid,
+.field textarea.valid,
 .form-control-warning,
+.input-text.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field input.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field select.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field textarea.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.input-text[type="checkbox"].mage-error,
+.input-text[type="radio"].mage-error,
+.field input[type="checkbox"].mage-error,
+.field input[type="radio"].mage-error,
+.field select[type="checkbox"].mage-error,
+.field select[type="radio"].mage-error,
+.field textarea[type="checkbox"].mage-error,
+.field textarea[type="radio"].mage-error,
+.input-text[type="file"].mage-error,
+.field input[type="file"].mage-error,
+.field select[type="file"].mage-error,
+.field textarea[type="file"].mage-error,
+.input-text.mage-error,
+.field input.mage-error,
+.field select.mage-error,
+.field textarea.mage-error,
 .form-control-danger {
   padding-right: 2.25rem;
   background-repeat: no-repeat;
   background-position: center right 0.5625rem;
   background-size: 1.125rem 1.125rem; }
 
-.has-success .form-control-feedback,
+.has-success .form-control-feedback, .has-success .field div.mage-error[generated], .field .has-success div.mage-error[generated],
 .has-success .form-control-label,
 .has-success .col-form-label,
 .has-success .form-check-label,
+.has-success .field.choice,
 .has-success .custom-control {
   color: #5cb85c; }
 
-.has-success .form-control {
+.has-success .form-control, .has-success .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-success
+.field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-success input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-success
+.field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-success select:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-success
+.field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-success textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
   border-color: #5cb85c; }
 
 .has-success .input-group-addon {
@@ -1669,17 +1763,36 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   border-color: #5cb85c;
   background-color: #eaf6ea; }
 
-.has-success .form-control-success {
+.has-success .form-control-success, .has-success .input-text.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-success
+.field input.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-success input.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-success
+.field select.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-success select.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-success
+.field textarea.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-success textarea.valid:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-success .input-text.valid, .has-success
+.field input.valid,
+.field .has-success input.valid, .has-success
+.field select.valid,
+.field .has-success select.valid, .has-success
+.field textarea.valid,
+.field .has-success textarea.valid {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"); }
 
-.has-warning .form-control-feedback,
+.has-warning .form-control-feedback, .has-warning .field div.mage-error[generated], .field .has-warning div.mage-error[generated],
 .has-warning .form-control-label,
 .has-warning .col-form-label,
 .has-warning .form-check-label,
+.has-warning .field.choice,
 .has-warning .custom-control {
   color: #f0ad4e; }
 
-.has-warning .form-control {
+.has-warning .form-control, .has-warning .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-warning
+.field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-warning input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-warning
+.field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-warning select:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-warning
+.field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-warning textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
   border-color: #f0ad4e; }
 
 .has-warning .input-group-addon {
@@ -1687,17 +1800,36 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   border-color: #f0ad4e;
   background-color: white; }
 
-.has-warning .form-control-warning {
+.has-warning .form-control-warning, .has-warning .input-text.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-warning
+.field input.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-warning input.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-warning
+.field select.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-warning select.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-warning
+.field textarea.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-warning textarea.mage-error:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-warning .input-text.mage-error, .has-warning
+.field input.mage-error,
+.field .has-warning input.mage-error, .has-warning
+.field select.mage-error,
+.field .has-warning select.mage-error, .has-warning
+.field textarea.mage-error,
+.field .has-warning textarea.mage-error {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E"); }
 
-.has-danger .form-control-feedback,
+.has-danger .form-control-feedback, .has-danger .field div.mage-error[generated], .field .has-danger div.mage-error[generated],
 .has-danger .form-control-label,
 .has-danger .col-form-label,
 .has-danger .form-check-label,
+.has-danger .field.choice,
 .has-danger .custom-control {
   color: #d9534f; }
 
-.has-danger .form-control {
+.has-danger .form-control, .has-danger .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-danger
+.field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-danger input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-danger
+.field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-danger select:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .has-danger
+.field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .has-danger textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
   border-color: #d9534f; }
 
 .has-danger .input-group-addon {
@@ -1712,7 +1844,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   display: flex;
   flex-flow: row wrap;
   align-items: center; }
-  .form-inline .form-check {
+  .form-inline .form-check, .form-inline .field.choice {
     width: 100%; }
   @media (min-width: 576px) {
     .form-inline label {
@@ -1720,13 +1852,19 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
       align-items: center;
       justify-content: center;
       margin-bottom: 0; }
-    .form-inline .form-group {
+    .form-inline .form-group, .form-inline .field:not(.choice) {
       display: flex;
       flex: 0 0 auto;
       flex-flow: row wrap;
       align-items: center;
       margin-bottom: 0; }
-    .form-inline .form-control {
+    .form-inline .form-control, .form-inline .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .form-inline
+    .field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .form-inline input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .form-inline
+    .field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .form-inline select:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .form-inline
+    .field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .form-inline textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
       display: inline-block;
       width: auto;
       vertical-align: middle; }
@@ -1737,16 +1875,28 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     .form-inline .form-control-label {
       margin-bottom: 0;
       vertical-align: middle; }
-    .form-inline .form-check {
+    .form-inline .form-check, .form-inline .field.choice {
       display: flex;
       align-items: center;
       justify-content: center;
       width: auto;
       margin-top: 0;
       margin-bottom: 0; }
-    .form-inline .form-check-label {
+    .form-inline .form-check-label, .form-inline .field.choice {
       padding-left: 0; }
-    .form-inline .form-check-input {
+    .form-inline .form-check-input, .form-inline .input-text[type="checkbox"], .form-inline .input-text[type="radio"], .form-inline
+    .field input[type="checkbox"],
+    .field .form-inline input[type="checkbox"], .form-inline
+    .field input[type="radio"],
+    .field .form-inline input[type="radio"], .form-inline
+    .field select[type="checkbox"],
+    .field .form-inline select[type="checkbox"], .form-inline
+    .field select[type="radio"],
+    .field .form-inline select[type="radio"], .form-inline
+    .field textarea[type="checkbox"],
+    .field .form-inline textarea[type="checkbox"], .form-inline
+    .field textarea[type="radio"],
+    .field .form-inline textarea[type="radio"] {
       position: relative;
       margin-top: 0;
       margin-right: 0.25rem;
@@ -1761,7 +1911,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
       display: inline-block;
       margin-right: 0.25rem;
       vertical-align: text-bottom; }
-    .form-inline .has-feedback .form-control-feedback {
+    .form-inline .has-feedback .form-control-feedback, .form-inline .has-feedback .field div.mage-error[generated], .field .form-inline .has-feedback div.mage-error[generated] {
       top: 0; } }
 
 .btn, .actions-toolbar > .primary a.action:not(.primary),
@@ -1801,15 +1951,17 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 a.btn.disabled, .actions-toolbar > .primary a.disabled.action:not(.primary),
 .actions-toolbar > .secondary a.disabled.action:not(.primary), a.disabled.action.primary, a.disabled.action.secondary,
-fieldset[disabled] a.btn,
+fieldset[disabled] a.btn, [disabled].fieldset a.btn,
 fieldset[disabled] .actions-toolbar > .primary a.action:not(.primary), .actions-toolbar > .primary
-fieldset[disabled] a.action:not(.primary),
+fieldset[disabled] a.action:not(.primary), [disabled].fieldset .actions-toolbar > .primary a.action:not(.primary), .actions-toolbar > .primary [disabled].fieldset a.action:not(.primary),
 fieldset[disabled]
 .actions-toolbar > .secondary a.action:not(.primary),
 .actions-toolbar > .secondary
-fieldset[disabled] a.action:not(.primary),
-fieldset[disabled] a.action.primary,
-fieldset[disabled] a.action.secondary {
+fieldset[disabled] a.action:not(.primary), [disabled].fieldset
+.actions-toolbar > .secondary a.action:not(.primary),
+.actions-toolbar > .secondary [disabled].fieldset a.action:not(.primary),
+fieldset[disabled] a.action.primary, [disabled].fieldset a.action.primary,
+fieldset[disabled] a.action.secondary, [disabled].fieldset a.action.secondary {
   pointer-events: none; }
 
 .btn-primary {
@@ -2572,24 +2724,74 @@ tbody.collapse.show {
   position: relative;
   display: flex;
   width: 100%; }
-  .input-group .form-control {
+  .input-group .form-control, .input-group .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+  .field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+  .field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group select:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+  .field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
     position: relative;
     z-index: 2;
     flex: 1 1 auto;
     width: 1%;
     margin-bottom: 0; }
-    .input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover {
+    .input-group .form-control:focus, .input-group .input-text:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+    .field input:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .input-group input:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+    .field select:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .input-group select:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+    .field textarea:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .input-group textarea:focus:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group .form-control:active, .input-group .input-text:active:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+    .field input:active:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .input-group input:active:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+    .field select:active:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .input-group select:active:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+    .field textarea:active:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .input-group textarea:active:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group .form-control:hover, .input-group .input-text:hover:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+    .field input:hover:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .input-group input:hover:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+    .field select:hover:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .input-group select:hover:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+    .field textarea:hover:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .field .input-group textarea:hover:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
       z-index: 3; }
 
 .input-group-addon,
 .input-group-btn,
-.input-group .form-control {
+.input-group .form-control,
+.input-group .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.input-group
+.field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field
+.input-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.input-group
+.field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field
+.input-group select:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.input-group
+.field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field
+.input-group textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
   display: flex;
   flex-direction: column;
   justify-content: center; }
   .input-group-addon:not(:first-child):not(:last-child),
   .input-group-btn:not(:first-child):not(:last-child),
-  .input-group .form-control:not(:first-child):not(:last-child) {
+  .input-group .form-control:not(:first-child):not(:last-child),
+  .input-group .input-text:not(:first-child):not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .input-group
+  .field input:not(:first-child):not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field
+  .input-group input:not(:first-child):not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .input-group
+  .field select:not(:first-child):not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field
+  .input-group select:not(:first-child):not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .input-group
+  .field textarea:not(:first-child):not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field
+  .input-group textarea:not(:first-child):not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
     border-radius: 0; }
 
 .input-group-addon,
@@ -2608,7 +2810,10 @@ tbody.collapse.show {
   background-color: #eceeef;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem; }
-  .input-group-addon.form-control-sm,
+  .input-group-addon.form-control-sm, .input-group-sm > .input-group-addon.input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-sm > input.input-group-addon:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-sm > select.input-group-addon:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-sm > textarea.input-group-addon:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
   .input-group-sm > .input-group-addon,
   .input-group-sm > .input-group-btn > .input-group-addon.btn, .actions-toolbar > .primary
   .input-group-sm > .input-group-btn > a.input-group-addon.action:not(.primary),
@@ -2619,7 +2824,10 @@ tbody.collapse.show {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
     border-radius: 0.2rem; }
-  .input-group-addon.form-control-lg,
+  .input-group-addon.form-control-lg, .input-group-lg > .input-group-addon.input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-lg > input.input-group-addon:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-lg > select.input-group-addon:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  .field .input-group-lg > textarea.input-group-addon:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
   .input-group-lg > .input-group-addon,
   .input-group-lg > .input-group-btn > .input-group-addon.btn, .actions-toolbar > .primary
   .input-group-lg > .input-group-btn > a.input-group-addon.action:not(.primary),
@@ -2634,7 +2842,13 @@ tbody.collapse.show {
   .input-group-addon input[type="checkbox"] {
     margin-top: 0; }
 
-.input-group .form-control:not(:last-child),
+.input-group .form-control:not(:last-child), .input-group .input-text:not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+.field input:not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group input:not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+.field select:not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group select:not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+.field textarea:not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group textarea:not(:last-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 .input-group-addon:not(:last-child),
 .input-group-btn:not(:last-child) > .btn, .actions-toolbar > .primary
 .input-group-btn:not(:last-child) > a.action:not(.primary),
@@ -2667,7 +2881,13 @@ tbody.collapse.show {
 .input-group-addon:not(:last-child) {
   border-right: 0; }
 
-.input-group .form-control:not(:first-child),
+.input-group .form-control:not(:first-child), .input-group .input-text:not(:first-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+.field input:not(:first-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group input:not(:first-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+.field select:not(:first-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group select:not(:first-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]), .input-group
+.field textarea:not(:first-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.field .input-group textarea:not(:first-child):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 .input-group-addon:not(:first-child),
 .input-group-btn:not(:first-child) > .btn, .actions-toolbar > .primary
 .input-group-btn:not(:first-child) > a.action:not(.primary),
@@ -2697,7 +2917,10 @@ tbody.collapse.show {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
-.form-control + .input-group-addon:not(:first-child) {
+.form-control + .input-group-addon:not(:first-child), .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]) + .input-group-addon:not(:first-child),
+.field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) + .input-group-addon:not(:first-child),
+.field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]) + .input-group-addon:not(:first-child),
+.field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]) + .input-group-addon:not(:first-child) {
   border-left: 0; }
 
 .input-group-btn {
@@ -3740,6 +3963,8 @@ a.badge:focus, a.badge:hover {
     border-color: #0275d8; }
     .list-group-item.active .list-group-item-heading, .breadcrumbs .items .list-group-item.item:last-child .list-group-item-heading,
     .list-group-item.active .list-group-item-heading > small, .breadcrumbs .items .list-group-item.item:last-child .list-group-item-heading > small,
+    .list-group-item.active .field .list-group-item-heading > .note, .field
+    .list-group-item.active .list-group-item-heading > .note, .breadcrumbs .items .list-group-item.item:last-child .field .list-group-item-heading > .note, .field .breadcrumbs .items .list-group-item.item:last-child .list-group-item-heading > .note,
     .list-group-item.active .list-group-item-heading > .small, .breadcrumbs .items .list-group-item.item:last-child .list-group-item-heading > .small {
       color: inherit; }
     .list-group-item.active .list-group-item-text, .breadcrumbs .items .list-group-item.item:last-child .list-group-item-text {
@@ -6223,10 +6448,10 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 .text-white {
   color: #fff !important; }
 
-.text-muted {
+.text-muted, .field .note {
   color: #636c72 !important; }
 
-a.text-muted:focus, a.text-muted:hover {
+a.text-muted:focus, .field a.note:focus, a.text-muted:hover, .field a.note:hover {
   color: #4b5257 !important; }
 
 .text-primary {
@@ -6443,3 +6668,219 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
     background-color: #e6e6e6;
     background-image: none;
     border-color: #adadad; }
+
+.fieldset > br {
+  display: none; }
+
+.field.required label:after, .field.required .label:after {
+  content: '*';
+  color: #d9534f;
+  margin-left: 5px; }
+
+.field div.mage-error[generated] {
+  color: #d9534f; }
+
+.field .fields.group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px; }
+  @media (min-width: 576px) {
+    .field .fields.group {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 768px) {
+    .field .fields.group {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 992px) {
+    .field .fields.group {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 1200px) {
+    .field .fields.group {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  .field .fields.group .field {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 100%;
+    max-width: 100%; }
+    @media (min-width: 576px) {
+      .field .fields.group .field {
+        padding-right: 15px;
+        padding-left: 15px; } }
+    @media (min-width: 768px) {
+      .field .fields.group .field {
+        padding-right: 15px;
+        padding-left: 15px; } }
+    @media (min-width: 992px) {
+      .field .fields.group .field {
+        padding-right: 15px;
+        padding-left: 15px; } }
+    @media (min-width: 1200px) {
+      .field .fields.group .field {
+        padding-right: 15px;
+        padding-left: 15px; } }
+  @media (min-width: 768px) {
+    .field .fields.group.group-2 .field {
+      flex: 0 0 50%;
+      max-width: 50%; }
+    .field .fields.group.group-3 .field {
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%; }
+    .field .fields.group.group-4 .field {
+      flex: 0 0 25%;
+      max-width: 25%; }
+    .field .fields.group.group-5 .field {
+      flex: 0 0 20%;
+      max-width: 20%; } }
+
+.input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error,
+.field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error,
+.field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error,
+.field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error {
+  border-color: #d9534f; }
+  .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error[type="text"],
+  .field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error[type="text"],
+  .field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error[type="text"],
+  .field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error[type="text"] {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"); }
+  .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error:focus,
+  .field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error:focus,
+  .field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error:focus,
+  .field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]).mage-error:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #eba5a3; }
+
+.input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid,
+.field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid,
+.field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid,
+.field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid {
+  border-color: #5cb85c; }
+  .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid[type="text"],
+  .field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid[type="text"],
+  .field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid[type="text"],
+  .field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid[type="text"] {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"); }
+  .input-text:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid:focus,
+  .field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid:focus,
+  .field select:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid:focus,
+  .field textarea:not([type="checkbox"]):not([type="radio"]):not([type="file"]).valid:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #a3d7a3; }
+
+.input-text[type="checkbox"].mage-error, .input-text[type="radio"].mage-error,
+.field input[type="checkbox"].mage-error,
+.field input[type="radio"].mage-error,
+.field select[type="checkbox"].mage-error,
+.field select[type="radio"].mage-error,
+.field textarea[type="checkbox"].mage-error,
+.field textarea[type="radio"].mage-error {
+  border-color: #d9534f; }
+  .input-text[type="checkbox"].mage-error[type="text"], .input-text[type="radio"].mage-error[type="text"],
+  .field input[type="checkbox"].mage-error[type="text"],
+  .field input[type="radio"].mage-error[type="text"],
+  .field select[type="checkbox"].mage-error[type="text"],
+  .field select[type="radio"].mage-error[type="text"],
+  .field textarea[type="checkbox"].mage-error[type="text"],
+  .field textarea[type="radio"].mage-error[type="text"] {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"); }
+  .input-text[type="checkbox"].mage-error:focus, .input-text[type="radio"].mage-error:focus,
+  .field input[type="checkbox"].mage-error:focus,
+  .field input[type="radio"].mage-error:focus,
+  .field select[type="checkbox"].mage-error:focus,
+  .field select[type="radio"].mage-error:focus,
+  .field textarea[type="checkbox"].mage-error:focus,
+  .field textarea[type="radio"].mage-error:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #eba5a3; }
+
+.input-text[type="checkbox"].valid, .input-text[type="radio"].valid,
+.field input[type="checkbox"].valid,
+.field input[type="radio"].valid,
+.field select[type="checkbox"].valid,
+.field select[type="radio"].valid,
+.field textarea[type="checkbox"].valid,
+.field textarea[type="radio"].valid {
+  border-color: #5cb85c; }
+  .input-text[type="checkbox"].valid[type="text"], .input-text[type="radio"].valid[type="text"],
+  .field input[type="checkbox"].valid[type="text"],
+  .field input[type="radio"].valid[type="text"],
+  .field select[type="checkbox"].valid[type="text"],
+  .field select[type="radio"].valid[type="text"],
+  .field textarea[type="checkbox"].valid[type="text"],
+  .field textarea[type="radio"].valid[type="text"] {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"); }
+  .input-text[type="checkbox"].valid:focus, .input-text[type="radio"].valid:focus,
+  .field input[type="checkbox"].valid:focus,
+  .field input[type="radio"].valid:focus,
+  .field select[type="checkbox"].valid:focus,
+  .field select[type="radio"].valid:focus,
+  .field textarea[type="checkbox"].valid:focus,
+  .field textarea[type="radio"].valid:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #a3d7a3; }
+
+.input-text[type="file"].mage-error,
+.field input[type="file"].mage-error,
+.field select[type="file"].mage-error,
+.field textarea[type="file"].mage-error {
+  border-color: #d9534f; }
+  .input-text[type="file"].mage-error[type="text"],
+  .field input[type="file"].mage-error[type="text"],
+  .field select[type="file"].mage-error[type="text"],
+  .field textarea[type="file"].mage-error[type="text"] {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"); }
+  .input-text[type="file"].mage-error:focus,
+  .field input[type="file"].mage-error:focus,
+  .field select[type="file"].mage-error:focus,
+  .field textarea[type="file"].mage-error:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #eba5a3; }
+
+.input-text[type="file"].valid,
+.field input[type="file"].valid,
+.field select[type="file"].valid,
+.field textarea[type="file"].valid {
+  border-color: #5cb85c; }
+  .input-text[type="file"].valid[type="text"],
+  .field input[type="file"].valid[type="text"],
+  .field select[type="file"].valid[type="text"],
+  .field textarea[type="file"].valid[type="text"] {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"); }
+  .input-text[type="file"].valid:focus,
+  .field input[type="file"].valid:focus,
+  .field select[type="file"].valid:focus,
+  .field textarea[type="file"].valid:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #a3d7a3; }
+
+.input-text.mage-error,
+.field input.mage-error,
+.field select.mage-error,
+.field textarea.mage-error {
+  border-color: #d9534f; }
+  .input-text.mage-error[type="text"],
+  .field input.mage-error[type="text"],
+  .field select.mage-error[type="text"],
+  .field textarea.mage-error[type="text"] {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"); }
+  .input-text.mage-error:focus,
+  .field input.mage-error:focus,
+  .field select.mage-error:focus,
+  .field textarea.mage-error:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #eba5a3; }
+
+.input-text.valid,
+.field input.valid,
+.field select.valid,
+.field textarea.valid {
+  border-color: #5cb85c; }
+  .input-text.valid[type="text"],
+  .field input.valid[type="text"],
+  .field select.valid[type="text"],
+  .field textarea.valid[type="text"] {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"); }
+  .input-text.valid:focus,
+  .field input.valid:focus,
+  .field select.valid:focus,
+  .field textarea.valid:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #a3d7a3; }
