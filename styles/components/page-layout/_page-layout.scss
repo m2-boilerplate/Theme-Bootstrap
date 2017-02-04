@@ -44,7 +44,6 @@
 }
 
 .page-layout-2columns-right .columns {
-  @include clearfix();
   .column.main {
     order: 2;
   }
@@ -73,7 +72,6 @@
 }
 
 .page-layout-3columns .columns {
-  @include clearfix();
   .sidebar-main {
     width: 20%;
     order: 1;
@@ -88,13 +86,15 @@
   @include media-breakpoint-up(md) {
     .sidebar-main {
       width: 20%;
+      @include make-col(2, 10);
     }
     .column.main {
-      flex-grow: 1;
       width: auto;
+      flex: 1 0 auto;
     }
     .sidebar-additional {
       width: 20%;
+      @include make-col(2, 10);
     }
   }
 }

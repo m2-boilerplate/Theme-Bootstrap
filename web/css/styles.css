@@ -6982,11 +6982,6 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
       float: left;
       width: 20%; } }
 
-.page-layout-2columns-right .columns::after {
-  display: block;
-  content: "";
-  clear: both; }
-
 .page-layout-2columns-right .columns .column.main {
   order: 2; }
 
@@ -7009,11 +7004,6 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
       float: right;
       width: 20%; } }
 
-.page-layout-3columns .columns::after {
-  display: block;
-  content: "";
-  clear: both; }
-
 .page-layout-3columns .columns .sidebar-main {
   width: 20%;
   order: 1; }
@@ -7027,9 +7017,13 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 
 @media (min-width: 768px) {
   .page-layout-3columns .columns .sidebar-main {
-    width: 20%; }
+    width: 20%;
+    flex: 0 0 20%;
+    max-width: 20%; }
   .page-layout-3columns .columns .column.main {
-    flex-grow: 1;
-    width: auto; }
+    width: auto;
+    flex: 1 0 auto; }
   .page-layout-3columns .columns .sidebar-additional {
-    width: 20%; } }
+    width: 20%;
+    flex: 0 0 20%;
+    max-width: 20%; } }
