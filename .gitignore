@@ -5,5 +5,9 @@ node_modules
 .DS_Store
 .idea
 
+# no generated css
+/web/css/*
+!/web/css/.gitkeep
+
 # Ignore generated documentation
 _documentation

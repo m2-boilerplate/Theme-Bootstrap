@@ -6884,3 +6884,152 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   .field select.valid:focus,
   .field textarea.valid:focus {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #a3d7a3; }
+
+.page-main {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 15px;
+  padding-left: 15px; }
+  @media (min-width: 576px) {
+    .page-main {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 768px) {
+    .page-main {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 992px) {
+    .page-main {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 1200px) {
+    .page-main {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  .page-main .columns {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px; }
+    .page-main .columns::before {
+      display: table;
+      content: " "; }
+    .page-main .columns::after {
+      display: block;
+      content: "";
+      clear: both; }
+    @media (min-width: 576px) {
+      .page-main .columns {
+        margin-right: -15px;
+        margin-left: -15px; } }
+    @media (min-width: 768px) {
+      .page-main .columns {
+        margin-right: -15px;
+        margin-left: -15px; } }
+    @media (min-width: 992px) {
+      .page-main .columns {
+        margin-right: -15px;
+        margin-left: -15px; } }
+    @media (min-width: 1200px) {
+      .page-main .columns {
+        margin-right: -15px;
+        margin-left: -15px; } }
+    .page-main .columns .column, .page-main .columns .sidebar {
+      position: relative;
+      width: 100%;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px;
+      flex: 0 0 100%;
+      max-width: 100%; }
+      @media (min-width: 576px) {
+        .page-main .columns .column, .page-main .columns .sidebar {
+          padding-right: 15px;
+          padding-left: 15px; } }
+      @media (min-width: 768px) {
+        .page-main .columns .column, .page-main .columns .sidebar {
+          padding-right: 15px;
+          padding-left: 15px; } }
+      @media (min-width: 992px) {
+        .page-main .columns .column, .page-main .columns .sidebar {
+          padding-right: 15px;
+          padding-left: 15px; } }
+      @media (min-width: 1200px) {
+        .page-main .columns .column, .page-main .columns .sidebar {
+          padding-right: 15px;
+          padding-left: 15px; } }
+
+.page-layout-2columns-left .columns .column.main {
+  order: 2; }
+
+.page-layout-2columns-left .columns .sidebar-main {
+  order: 1; }
+
+.page-layout-2columns-left .columns .sidebar-additional {
+  order: 2; }
+
+@media (min-width: 768px) {
+  .page-layout-2columns-left .columns {
+    display: block; }
+    .page-layout-2columns-left .columns .column.main {
+      float: right;
+      width: 80%; }
+    .page-layout-2columns-left .columns .sidebar-main {
+      float: left;
+      width: 20%; }
+    .page-layout-2columns-left .columns .sidebar-additional {
+      float: left;
+      width: 20%; } }
+
+.page-layout-2columns-right .columns::after {
+  display: block;
+  content: "";
+  clear: both; }
+
+.page-layout-2columns-right .columns .column.main {
+  order: 2; }
+
+.page-layout-2columns-right .columns .sidebar-main {
+  order: 1; }
+
+.page-layout-2columns-right .columns .sidebar-additional {
+  order: 2; }
+
+@media (min-width: 768px) {
+  .page-layout-2columns-right .columns {
+    display: block; }
+    .page-layout-2columns-right .columns .column.main {
+      float: left;
+      width: 80%; }
+    .page-layout-2columns-right .columns .sidebar-main {
+      float: left;
+      width: 20%; }
+    .page-layout-2columns-right .columns .sidebar-additional {
+      float: right;
+      width: 20%; } }
+
+.page-layout-3columns .columns::after {
+  display: block;
+  content: "";
+  clear: both; }
+
+.page-layout-3columns .columns .sidebar-main {
+  width: 20%;
+  order: 1; }
+
+.page-layout-3columns .columns .column.main {
+  order: 2; }
+
+.page-layout-3columns .columns .sidebar-additional {
+  width: 20%;
+  order: 3; }
+
+@media (min-width: 768px) {
+  .page-layout-3columns .columns .sidebar-main {
+    width: 20%; }
+  .page-layout-3columns .columns .column.main {
+    flex-grow: 1;
+    width: auto; }
+  .page-layout-3columns .columns .sidebar-additional {
+    width: 20%; } }
