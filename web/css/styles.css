@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
@@ -3678,35 +3679,35 @@ tbody.collapse.show {
   .breadcrumb-item.active, .breadcrumbs .items .active.item, .breadcrumbs .items .item:last-child {
     color: #636c72; }
 
-.pagination {
+.pagination, .pages .items {
   display: flex;
   padding-left: 0;
   list-style: none;
   border-radius: 0.25rem; }
 
-.page-item:first-child .page-link {
+.page-item:first-child .page-link, .pages .items .item:first-child .page-link, .page-item:first-child .pages .items .item > *, .pages .items .page-item:first-child .item > *, .pages .items .item:first-child .item > * {
   margin-left: 0;
   border-bottom-left-radius: 0.25rem;
   border-top-left-radius: 0.25rem; }
 
-.page-item:last-child .page-link {
+.page-item:last-child .page-link, .pages .items .item:last-child .page-link, .page-item:last-child .pages .items .item > *, .pages .items .page-item:last-child .item > *, .pages .items .item:last-child .item > * {
   border-bottom-right-radius: 0.25rem;
   border-top-right-radius: 0.25rem; }
 
-.page-item.active .page-link, .breadcrumbs .items .page-item.item:last-child .page-link {
+.page-item.active .page-link, .breadcrumbs .items .page-item.item:last-child .page-link, .breadcrumbs .pages .items .item:last-child .page-link, .pages .breadcrumbs .items .item:last-child .page-link, .pages .items .active.item .page-link, .page-item.active .pages .items .item > *, .pages .items .page-item.active .item > *, .breadcrumbs .pages .items .item:last-child .item > *, .pages .breadcrumbs .items .item:last-child .item > *, .pages .items .active.item .item > * {
   z-index: 2;
   color: #fff;
   background-color: #0275d8;
   border-color: #0275d8; }
 
-.page-item.disabled .page-link {
+.page-item.disabled .page-link, .pages .items .disabled.item .page-link, .page-item.disabled .pages .items .item > *, .pages .items .page-item.disabled .item > *, .pages .items .disabled.item .item > * {
   color: #636c72;
   pointer-events: none;
   cursor: not-allowed;
   background-color: #fff;
   border-color: #ddd; }
 
-.page-link {
+.page-link, .pages .items .item > *, .pages .items .item.current > * {
   position: relative;
   display: block;
   padding: 0.5rem 0.75rem;
@@ -3715,33 +3716,33 @@ tbody.collapse.show {
   color: #0275d8;
   background-color: #fff;
   border: 1px solid #ddd; }
-  .page-link:focus, .page-link:hover {
+  .page-link:focus, .pages .items .item > :focus, .page-link:hover, .pages .items .item > :hover {
     color: #014c8c;
     text-decoration: none;
     background-color: #eceeef;
     border-color: #ddd; }
 
-.pagination-lg .page-link {
+.pagination-lg .page-link, .pagination-lg .pages .items .item > *, .pages .items .pagination-lg .item > * {
   padding: 0.75rem 1.5rem;
   font-size: 1.25rem; }
 
-.pagination-lg .page-item:first-child .page-link {
+.pagination-lg .page-item:first-child .page-link, .pagination-lg .pages .items .item:first-child .page-link, .pages .items .pagination-lg .item:first-child .page-link, .pagination-lg .page-item:first-child .pages .items .item > *, .pages .items .pagination-lg .page-item:first-child .item > *, .pagination-lg .pages .items .item:first-child .item > *, .pages .items .pagination-lg .item:first-child .item > * {
   border-bottom-left-radius: 0.3rem;
   border-top-left-radius: 0.3rem; }
 
-.pagination-lg .page-item:last-child .page-link {
+.pagination-lg .page-item:last-child .page-link, .pagination-lg .pages .items .item:last-child .page-link, .pages .items .pagination-lg .item:last-child .page-link, .pagination-lg .page-item:last-child .pages .items .item > *, .pages .items .pagination-lg .page-item:last-child .item > *, .pagination-lg .pages .items .item:last-child .item > *, .pages .items .pagination-lg .item:last-child .item > * {
   border-bottom-right-radius: 0.3rem;
   border-top-right-radius: 0.3rem; }
 
-.pagination-sm .page-link {
+.pagination-sm .page-link, .pagination-sm .pages .items .item > *, .pages .items .pagination-sm .item > * {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem; }
 
-.pagination-sm .page-item:first-child .page-link {
+.pagination-sm .page-item:first-child .page-link, .pagination-sm .pages .items .item:first-child .page-link, .pages .items .pagination-sm .item:first-child .page-link, .pagination-sm .page-item:first-child .pages .items .item > *, .pages .items .pagination-sm .page-item:first-child .item > *, .pagination-sm .pages .items .item:first-child .item > *, .pages .items .pagination-sm .item:first-child .item > * {
   border-bottom-left-radius: 0.2rem;
   border-top-left-radius: 0.2rem; }
 
-.pagination-sm .page-item:last-child .page-link {
+.pagination-sm .page-item:last-child .page-link, .pagination-sm .pages .items .item:last-child .page-link, .pages .items .pagination-sm .item:last-child .page-link, .pagination-sm .page-item:last-child .pages .items .item > *, .pages .items .pagination-sm .page-item:last-child .item > *, .pagination-sm .pages .items .item:last-child .item > *, .pages .items .pagination-sm .item:last-child .item > * {
   border-bottom-right-radius: 0.2rem;
   border-top-right-radius: 0.2rem; }
 
@@ -5188,7 +5189,7 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   top: 0;
   z-index: 1030; }
 
-.sr-only {
+.sr-only, .pages .pages-label, .pages .items .item:first-child > * span, .pages .items .item:last-child > * span, .pages .items .item .label {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -7072,3 +7073,26 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
     border-top-color: #c1e2b3; }
   .messages .message.success .alert-link {
     color: #2b542c; }
+
+.pages .items .item:first-child > * {
+  margin-left: 0;
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem; }
+  .pages .items .item:first-child > *:before {
+    content: "«"; }
+
+.pages .items .item:last-child > * {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem; }
+  .pages .items .item:last-child > *:after {
+    content: "»"; }
+
+.pages .items .item.current strong {
+  font-weight: normal; }
+
+.pages .items .item.current > *, .pages .items .item.current > *:focus, .pages .items .item.current > *:hover {
+  z-index: 2;
+  color: #fff;
+  cursor: default;
+  background-color: #0275d8;
+  border-color: #0275d8; }
