@@ -1,0 +1,20 @@
+status: wip
+context:
+  modifier: "info"
+variants:
+  - name: "info"
+    context:
+      modifier: "info"
+  - name: "error"
+    context:
+      modifier: "error"
+  - name: "warning"
+    context:
+      modifier: "warning"
+  - name: "notice"
+    context:
+      modifier: "notice"
+  - name: "success"
+    context:
+      modifier: "success"
+
