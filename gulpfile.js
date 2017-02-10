@@ -29,21 +29,34 @@ const logger = fractal.cli.console; // keep a reference to the fractal CLI conso
 
 var sass = require('gulp-sass');
  
-gulp.task('styles', function () {
+gulp.task('styles', ['styles:vendor'], function () {
   return gulp.src('./styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./web/css'));
 });
  
 gulp.task('styles:watch', function () {
-  gulp.watch('./styles/**/*.scss', ['styles', 'styles:lint']);
+  gulp.watch('./styles/components/**/*.scss', ['styles', 'styles:lint']);
 });
 
+gulp.task('styles:vendor', ['styles:vendor:bootstrap', 'styles:vendor:font-awesome']);
+
+gulp.task('styles:vendor:bootstrap', function() {
+    gulp.src('./node_modules/bootstrap/scss/**/*').pipe(gulp.dest('./styles/vendor/bootstrap'));
+});
+
+gulp.task('styles:vendor:font-awesome', function() {
+    gulp.src('./node_modules/font-awesome/scss/**/*').pipe(gulp.dest('./styles/vendor/font-awesome'));
+});
+
+gulp.task('fonts', function() {
+    return gulp.src('./node_modules/font-awesome/fonts/**/*').pipe(gulp.dest('./web/fonts'));
+});
 
 const sassLint = require('gulp-sass-lint');
 
 gulp.task('styles:lint', function () {
-  return gulp.src('styles/**/*.scss')
+  return gulp.src('styles/components/**/*.scss')
     .pipe(sassLint({
        configFile: '.scss-lint.yml'
     }))

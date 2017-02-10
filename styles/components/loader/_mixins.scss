@@ -1,0 +1,39 @@
+@mixin magento-loader() {
+  background-color: rgba(255, 255, 255, .7);
+  z-index: 9999;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  &::before {
+    @include fa-icon();
+    @extend .fa-pulse;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -15px;
+    margin-left: -15px;
+    font-size: 30px;
+    content: $fa-var-spinner;
+  }
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+  }
+}
+
+@mixin magento-loader-mask() {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
