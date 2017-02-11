@@ -1,0 +1,7 @@
+.review-control-vote {
+  @include magento-rating-vote();
+}
+
+.rating-summary {
+  @include magento-rating-summary();
+}
