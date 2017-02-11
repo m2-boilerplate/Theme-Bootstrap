@@ -2,28 +2,9 @@
   @include magento-loader();
   position: absolute;
 
-  & > span {
+  > span {
     display: none;
   }
-}
-
-.loading-mask {
-  @include magento-loader-mask();
-  background: rgba(255, 255, 255, 0.5);
-
-  .loader {
-    & > img {
-      @include magento-loader-mask();
-    }
-
-    & > p {
-      display: none;
-    }
-  }
-}
-
-body  > .loading-mask {
-  z-index: 9999;
 }
 
 ._block-content-loading {

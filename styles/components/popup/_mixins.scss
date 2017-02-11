@@ -1,0 +1,36 @@
+@mixin magento-popup(
+$header-selector: '.popup.header',
+$content-selector: '.modal-inner-wrap',
+$title-selector: '.modal-title',
+$close-selector: '.action.close',
+$body-selector: '.popup.content',
+$footer-selector: '.popup.footer'
+) {
+  @extend .modal-dialog;
+  @extend .modal-content;
+  #{$close-selector} {
+    @extend .close;
+    position: absolute;
+    top: $modal-header-padding;
+    right: $modal-header-padding;
+    span {
+      display: none;
+    }
+    &::after {
+      content: "x";
+    }
+  }
+  #{$header-selector} {
+    @extend .modal-header;
+    .title {
+      @extend .modal-title;
+      @extend h5;
+    }
+  }
+  #{$body-selector} {
+    @extend .modal-body;
+  }
+  #{$footer-selector} {
+    @extend .modal-footer;
+  }
+}
