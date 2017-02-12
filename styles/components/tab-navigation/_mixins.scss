@@ -1,4 +1,4 @@
-@mixin magento-tab-navigation($title-selector: ".item.title", $content-selector: ".item.content", $content-margin-top: 41px) {
+@mixin magento-tab-navigation($title-selector: ".item.title", $content-selector: ".item.content") {
   @extend .nav;
   @extend .nav-tabs;
   flex-wrap: wrap;
