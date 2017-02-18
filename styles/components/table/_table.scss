@@ -1,0 +1,16 @@
+table {
+  > caption {
+    @extend .sr-only;
+  }
+  .mark {
+    font-weight: normal;
+    text-align: right;
+    background: inherit;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .table-wrapper .table:not(.totals) {
+    @include magento-responsive-table();
+  }
+}

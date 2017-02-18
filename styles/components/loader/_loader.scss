@@ -1,0 +1,12 @@
+.load.indicator {
+  @include magento-loader();
+  position: absolute;
+
+  > span {
+    display: none;
+  }
+}
+
+._block-content-loading {
+  position: relative;
+}

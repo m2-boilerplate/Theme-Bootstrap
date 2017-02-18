@@ -5,5 +5,13 @@ node_modules
 .DS_Store
 .idea
 
+# no vendor files
+/styles/vendor
+
+# no generated assets
+/web/css/*
+!/web/css/.gitkeep
+/web/fonts/*
+
 # Ignore generated documentation
 _documentation

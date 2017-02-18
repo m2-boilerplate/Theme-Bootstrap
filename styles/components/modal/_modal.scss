@@ -1,0 +1,16 @@
+._has-modal {
+  @extend .modal-open;
+}
+//  Modals overlay
+.modals-overlay {
+  @extend .modal-backdrop;
+  opacity: .5;
+}
+.modal-popup,
+.modal-slide {
+  @include magento-modal();
+}
+
+.modal-slide {
+  @include magento-modal-slide();
+}
