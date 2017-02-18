@@ -30,7 +30,7 @@ const logger = fractal.cli.console; // keep a reference to the fractal CLI conso
 var sass = require('gulp-sass');
  
 gulp.task('styles', ['styles:vendor'], function () {
-  return gulp.src('./styles/**/*.scss')
+  return gulp.src(['./styles/**/*.scss', '!./styles/vendor/**/*.scss'])
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./web/css'));
 });
