@@ -1,0 +1,102 @@
+.page-main {
+  @include make-container();
+  .columns {
+    &::before {
+      display: table;
+      content: " ";
+    }
+    @include clearfix();
+    @include make-row();
+    .column, .sidebar {
+      @include make-col-ready();
+      @include make-col(1, 1);
+    }
+  }
+}
+
+
+.page-layout-2columns-left .columns {
+  .column.main {
+    order: 2;
+  }
+  .sidebar-main {
+    order: 1;
+  }
+  .sidebar-additional {
+    order: 2;
+  }
+
+  @include media-breakpoint-up(md) {
+    display: block;
+    .column.main {
+      float: right;
+      width: 80%;
+    }
+    .sidebar-main {
+      float: left;
+      width: 20%;
+    }
+    .sidebar-additional {
+      float: left;
+      width: 20%;
+    }
+  }
+}
+
+.page-layout-2columns-right .columns {
+  .column.main {
+    order: 2;
+  }
+  .sidebar-main {
+    order: 1;
+  }
+  .sidebar-additional {
+    order: 2;
+  }
+
+  @include media-breakpoint-up(md) {
+    display: block;
+    .column.main {
+      float: left;
+      width: 80%;
+    }
+    .sidebar-main {
+      float: left;
+      width: 20%;
+    }
+    .sidebar-additional {
+      float: right;
+      width: 20%;
+    }
+  }
+}
+
+.page-layout-3columns .columns {
+  .sidebar-main {
+    width: 20%;
+    order: 1;
+  }
+  .column.main {
+    order: 2;
+  }
+  .sidebar-additional {
+    width: 20%;
+    order: 3;
+  }
+  @include media-breakpoint-up(md) {
+    .sidebar-main {
+      width: 20%;
+      @include make-col(2, 10);
+    }
+    .column.main {
+      width: auto;
+      flex: 1 0 auto;
+    }
+    .sidebar-additional {
+      width: 20%;
+      @include make-col(2, 10);
+    }
+  }
+}
+
+

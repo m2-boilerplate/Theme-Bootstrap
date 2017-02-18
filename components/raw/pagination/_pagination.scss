@@ -1,0 +1,51 @@
+.pages {
+  .pages-label {
+    @extend .sr-only;
+  }
+  .items {
+    @extend .pagination;
+    .item {
+      &:first-child > *  {
+        margin-left: 0;
+        @include border-left-radius($border-radius);
+        span {
+          @extend .sr-only;
+        }
+        &:before {
+          content: "«";
+        }
+      }
+      &:last-child > * {
+        @include border-right-radius($border-radius);
+        span {
+          @extend .sr-only;
+        }
+        &:after {
+          content: "»";
+        }
+      }
+      @extend .page-item;
+      > * {
+        @extend .page-link;
+      }
+      .label {
+        @extend .sr-only;
+      }
+      &.current {
+        strong {
+          font-weight: normal;
+        }
+        > * {
+          @extend .page-link;
+          @include plain-hover-focus {
+            z-index: 2;
+            color: $pagination-active-color;
+            cursor: default;
+            background-color: $pagination-active-bg;
+            border-color: $pagination-active-border;
+          }
+        }
+      }
+    }
+  }
+}

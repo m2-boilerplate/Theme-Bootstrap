@@ -1,0 +1,83 @@
+@mixin magento-modal(
+$header-selector: '.modal-header',
+$content-selector: '.modal-inner-wrap',
+$title-selector: '.modal-title',
+$close-selector: '.action-close',
+$body-selector: 'div.modal-content',
+$footer-selector: 'footer.modal-content'
+) {
+  @extend .modal;
+
+  @extend .fade;
+  &._show {
+    @extend .show;
+    display: block;
+  }
+  #{$content-selector} {
+    @extend .modal-dialog;
+    position: relative;
+    background-color: $modal-content-bg;
+    background-clip: padding-box;
+    border: $modal-content-border-width solid $modal-content-border-color;
+    @include border-radius($border-radius-lg);
+    @include box-shadow($modal-content-xs-box-shadow);
+    // Remove focus outline from opened modal
+    outline: 0;
+    #{$body-selector} {
+      border: 0;
+      box-shadow: none;
+      @extend .modal-body;
+    }
+
+    #{$footer-selector} {
+      border: 0;
+      box-shadow: none;
+      @extend .modal-footer;
+    }
+  }
+
+  #{$header-selector} {
+    @extend .modal-header;
+    #{$title-selector} {
+      @extend .modal-title;
+      @extend h5;
+    }
+    #{$close-selector} {
+      @extend .close;
+      span {
+        display: none;
+      }
+      &::after {
+        content: "x";
+      }
+    }
+  }
+}
+@mixin magento-modal-slide(
+$header-selector: '.modal-header',
+$content-selector: '.modal-inner-wrap',
+$title-selector: '.modal-title',
+$close-selector: '.action-close',
+$body-selector: 'div.modal-content',
+$footer-selector: 'footer.modal-content'
+) {
+
+  #{$content-selector} {
+
+    border: 0;
+    margin: 0;
+    border-radius: 0;
+    height: 100%;
+    overflow-y: auto;
+    position: static;
+    transform: translateX(100%);
+    transition-duration: .3s;
+    transition-property: transform,visibility;
+    transition-timing-function: ease-in-out;
+    width: auto;
+  }
+
+  &._show {
+    transform: translateX(0);
+  }
+}
