@@ -22,7 +22,7 @@ SHA=`git rev-parse --verify HEAD`
 
 # Clone the existing gh-pages for this repo into _documentation/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
-git clone $REPO _documentation
+git clone $REPO build/documentation
 cd build/documentation
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ../..
