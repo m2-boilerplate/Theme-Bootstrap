@@ -1,3 +1,19 @@
+.navigation,
+.breadcrumbs,
+.page-header .header.panel,
+.header.content,
+.footer.content,
+.page-wrapper > .widget,
+.page-wrapper > .page-bottom,
+.block.category.event,
+.top-container,
+.page-main {
+  @include make-container();
+  @include make-container-max-widths();
+}
+
+
+
 .page-main {
   @include make-container();
   .columns {
