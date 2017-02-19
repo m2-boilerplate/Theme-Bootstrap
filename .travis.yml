@@ -8,7 +8,6 @@ cache:
   - node_modules
 script: gulp test
 before_deploy:
-- chmod a+x deploy.sh
 - "./deploy.sh"
 deploy:
   provider: releases
