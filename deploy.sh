@@ -23,18 +23,18 @@ SHA=`git rev-parse --verify HEAD`
 # Clone the existing gh-pages for this repo into _documentation/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
 git clone $REPO _documentation
-cd _documentation
+cd build/documentation
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-cd ..
+cd ../..
 
 # Clean out existing contents
-rm -rf _documentation/**/* || exit 0
+rm -rf build/documentation/**/* || exit 0
 
 # Run our compile script
 doCompile
 
 # Now let's go have some fun with the cloned repo
-cd _documentation
+cd build/documentation
 cp -rf tmp/* .
 rm -rf tmp
 
