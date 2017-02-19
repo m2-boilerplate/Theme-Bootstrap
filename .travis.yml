@@ -8,7 +8,7 @@ cache:
   - node_modules
 script: gulp test
 before_deploy:
-- "./deploy.sh"
+- "bin/sh deploy.sh"
 deploy:
   provider: releases
   api_key:
