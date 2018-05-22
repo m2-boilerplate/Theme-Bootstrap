@@ -6,7 +6,7 @@
 
   #{$content-selector} {
     @extend .card;
-    @extend .card-block;
+    @extend .card-body;
     display: none;
     border-top: 0;
     border-top-left-radius: 0;

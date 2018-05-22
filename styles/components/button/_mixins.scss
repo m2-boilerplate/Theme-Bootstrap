@@ -1,10 +1,9 @@
 @mixin magento-button(
-$_button-color                      : $btn-secondary-color,
-$_button-background                 : $btn-secondary-bg,
-$_button-border                     : $btn-secondary-border
+$_button-background                 : $primary,
+$_button-border                     : $primary
 ) {
   @extend .btn;
-  @include button-variant($_button-color, $_button-background, $_button-border);
+  @include button-variant($_button-background, $_button-border);
 }
 
 
@@ -46,13 +45,9 @@ $_button-border                     : $btn-secondary-border
 //  ---------------------------------------------
 
 @mixin magento-button-primary() {
-  @include magento-button(
-  $_button-color: $btn-primary-color,
-  $_button-border: $btn-primary-border,
-  $_button-background: $btn-primary-bg
-  );
+  @include magento-button();
 }
 
 @mixin magento-button-secondary() {
-  @include magento-button();
+  @include magento-button($secondary, $secondary);
 }

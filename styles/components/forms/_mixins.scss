@@ -12,7 +12,7 @@
   label, .label {
     &:after {
       content: '*';
-      color: $brand-danger;
+      color: $danger;
       margin-left: 5px;
     }
   }
@@ -20,28 +20,18 @@
 
 @mixin magento-form-element-validation() {
   &.mage-error {
-    @extend .form-control-warning;
-    &[type="text"]  {
-      background-image: $form-icon-danger;
-    }
-    border-color: $brand-danger;
-    @if $enable-rounded {
-      &:focus {
-        box-shadow: $input-box-shadow, 0 0 6px lighten($brand-danger, 20%);
-      }
+    @extend .form-control.is-invalid;
+    border-color: $danger;
+    &:focus {
+      box-shadow: 0 0 0 $input-focus-width rgba($danger, .25);
     }
   }
 
   &.valid {
-    @extend .form-control-success;
-    &[type="text"]  {
-      background-image: $form-icon-success;
-    }
-    border-color: $brand-success;
-    @if $enable-rounded {
-      &:focus {
-        box-shadow: $input-box-shadow, 0 0 6px lighten($brand-success, 20%);
-      }
+    @extend .form-control.is-valid;
+    border-color: $success;
+    &:focus {
+      box-shadow: 0 0 0 $input-focus-width rgba($success, .25);
     }
   }
 }
@@ -68,8 +58,7 @@
 
 
 @mixin magento-form-element-validation-note() {
-  color: $brand-danger;
-  @extend .form-control-feedback;
+  @extend .invalid-feedback;
 }
 
 @mixin magento-form-field-note() {

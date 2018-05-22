@@ -74,7 +74,7 @@ gulp.task('styles:lint', function () {
  * This task will also log any errors to the console.
  */
 
-gulp.task('fractal:start', ['styles', 'styles:lint', 'styles:watch'], function(){
+gulp.task('fractal:start', ['styles', 'styles:lint', 'styles:watch', 'fonts'], function(){
     const server = fractal.web.server({
         sync: true
     });
