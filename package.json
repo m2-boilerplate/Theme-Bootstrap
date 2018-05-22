@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@frctl/fractal": "^1.1.0",
-    "bootstrap": "4.0.0-alpha.6",
+    "bootstrap": "^4.1.1",
     "font-awesome": "^4.7.0",
     "git-rev-sync": "^1.8.0",
     "gulp": "^3.9.1",

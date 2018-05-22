@@ -1,4 +1,4 @@
-@mixin magento-rating-vote($color: $brand-primary, $rate-count: 5) {
+@mixin magento-rating-vote($color: $primary, $rate-count: 5) {
   overflow: hidden;
   &::before {
     @include fa-icon();
@@ -62,7 +62,7 @@
   }
 }
 
-@mixin magento-rating-summary($color: $brand-primary, $rate-count: 5) {
+@mixin magento-rating-summary($color: $primary, $rate-count: 5) {
   overflow: hidden;
   white-space: nowrap;
   .label {
