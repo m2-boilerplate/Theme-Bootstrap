@@ -2,19 +2,19 @@
   .message {
     @extend .alert;
     &.info {
-      @include alert-variant($alert-info-bg, $alert-info-border, $alert-info-text);
+      @include alert-variant(theme-color-level("info", $alert-bg-level), theme-color-level("info", $alert-border-level), theme-color-level("info", $alert-color-level));
     }
     &.error {
-      @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+      @include alert-variant(theme-color-level("danger", $alert-bg-level), theme-color-level("danger", $alert-border-level), theme-color-level("danger", $alert-color-level));
     }
     &.warning {
-      @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-text);
+      @include alert-variant(theme-color-level("warning", $alert-bg-level), theme-color-level("warning", $alert-border-level), theme-color-level("warning", $alert-color-level));
     }
     &.notice {
-      @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-text);
+      @include alert-variant(theme-color-level("warning", $alert-bg-level), theme-color-level("warning", $alert-border-level), theme-color-level("warning", $alert-color-level));
     }
     &.success {
-      @include alert-variant($alert-success-bg, $alert-success-border, $alert-success-text);
+      @include alert-variant(theme-color-level("success", $alert-bg-level), theme-color-level("success", $alert-border-level), theme-color-level("success", $alert-color-level));
     }
   }
 }
