@@ -1,21 +1,24 @@
 {
-  "name": "m2-magento-theme",
+  "name": "@m2-boilerplate/theme-frontend-bootstrap",
   "version": "1.0.0",
-  "description": "",
-  "main": "fractal.js",
+  "description": "Magento Theme based Bootstrap, with high frontend performance",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:clean": "rm -rf src/theme/web/css/styles.css; rm -rf src/theme/web/images/bootstrap-icons",
+    "build:copy": "cp node_modules/bootstrap/dist/css/bootstrap.css src/theme/web/css/styles.css; cp -r node_modules/bootstrap-icons/icons src/theme/web/images/bootstrap-icons",
+    "build": "npm run build:clean && npm run build:copy"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m2-boilerplate/magento2-serviceworker"
+  },
+  "author": "Thomas Hampe <github@hampe.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m2-boilerplate/magento2-serviceworker/issues"
+  },
+  "homepage": "https://github.com/m2-boilerplate/magento2-serviceworker#readme",
   "dependencies": {
-    "@frctl/fractal": "^1.1.0",
-    "bootstrap": "^4.1.1",
-    "font-awesome": "^4.7.0",
-    "git-rev-sync": "^1.8.0",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0",
-    "gulp-sass-lint": "^1.3.2",
-    "gulp-zip": "^4.0.0"
+    "bootstrap": "^5.0.0-alpha1",
+    "bootstrap-icons": "^1.0.0-alpha5"
   }
 }

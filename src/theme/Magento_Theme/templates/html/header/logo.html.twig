@@ -1,0 +1,11 @@
+<a
+    class="logo"
+    href="{{ block.getUrl('/') }}"
+    title="{{ block.getThemeName() ? block.getThemeName() : block.getLogoAlt() }}"
+    aria-label="store logo">
+    <img src="{{ block.getLogoSrc() }}"
+         title="{{ block.getLogoAlt() }}"
+         alt="{{ block.getLogoAlt() }}"
+         class="img-fluid"
+    />
+</a>

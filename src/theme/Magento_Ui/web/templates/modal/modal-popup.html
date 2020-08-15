@@ -1,0 +1,45 @@
+<div
+        role="dialog"
+        class="modal fade <%- data.type %> <%- data.modalClass %> <% if(data.responsive){ %><%- data.responsiveClass %><% } %> <% if(data.innerScroll){ %><%- data.innerScrollClass %><% } %>"
+        <% if(data.title){ %> aria-labelledby="modal-title-<%- data.id %>"<% } %>
+        aria-describedby="modal-content-<%- data.id %>"
+        data-role="modal"
+        data-type="<%- data.type %>"
+        tabindex="0">
+<div data-role="focusable-start" tabindex="0"></div>
+    <div class="modal-dialog" data-role="focusable-scope">
+        <div class="modal-content">
+            <div class="modal-header">
+                <% if(data.title || data.subTitle){ %>
+                <h5 id="modal-title-<%- data.id %>" class="modal-title"
+                    data-role="title">
+                    <% if(data.title){ %>
+                    <%= data.title %>
+                    <% } %>
+
+                    <% if(data.subTitle){ %>
+                    <small class="modal-subtitle"
+                          data-role="subtitle">
+                        <%= data.subTitle %>
+                    </small>
+                    <% } %>
+                </h5>
+                <% } %>
+                <button class="close" data-role="closeBtn" type="button" title="<%= data.closeText %>">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div id="modal-content-<%- data.id %>" class="modal-body" data-role="content"></div>
+            <% if(data.buttons.length > 0){ %>
+            <footer class="modal-footer">
+                <% _.each(data.buttons, function(button) { %>
+                <button
+                        class="btn <%- !button.class ? 'btn-secondary' : button.class.replace('action-', 'btn-') %>"
+                        type="button"
+                        data-role="action"><span><%= button.text %></span></button>
+                <% }); %>
+            </footer>
+            <% } %>
+        </div>
+    </div>
+</div>

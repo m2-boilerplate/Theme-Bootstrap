@@ -1,17 +1,23 @@
 {
-  "name": "m2-boilerplater/theme-frontend-bootstrap",
-  "description": "N/A",
+  "name": "m2-boilerplate/theme-frontend-bootstrap",
+  "description": "Magento Theme based Bootstrap, with high frontend performance",
   "require": {
-    "php": "7.0.2|7.0.4|~7.0.6|~7.1.0",
-    "magento/framework": "101.0.*"
+    "schumacherfm/magento-twig": "^1.7",
+    "m2-boilerplate/module-product-breadcrumbs": "^1.0|dev-master"
   },
-  "type": "magento2-theme",
+  "type": "magento2-component",
   "license": [
     "MIT"
   ],
   "autoload": {
     "files": [
-      "registration.php"
-    ]
-  }
+      "src/theme/registration.php",
+      "src/module/registration.php"
+    ],
+    "psr-4": {
+      "M2Boilerplate\\Bootstrap\\": "src/module"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

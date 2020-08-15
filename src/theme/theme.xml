@@ -1,0 +1,6 @@
+<theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/theme.xsd">
+    <title>M2 Boilerplate Theme: Bootstrap</title>
+    <media>
+        <preview_image>media/preview.png</preview_image>
+    </media>
+</theme>

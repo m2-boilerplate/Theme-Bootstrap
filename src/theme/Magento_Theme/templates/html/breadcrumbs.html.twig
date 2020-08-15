@@ -1,0 +1,25 @@
+{% if crumbs is iterable %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% for crumbInfo in crumbs %}
+                {% block breadcrumb %}
+                    {% if crumbInfo.link %}
+                    <li class="breadcrumb-item">
+                        <a href="{{ crumbInfo.link }}" title="{{ crumbInfo.title }}">
+                            {{ crumbInfo.label }}
+                        </a>
+                    </li>
+                    {% elseif crumbInfo.last %}
+                    <li class="breadcrumb-item active" aria-current="page">
+                        {{ crumbInfo.label }}
+                    </li>
+                    {% else %}
+                        <li class="breadcrumb-item">
+                            {{ crumbInfo.label }}
+                        </li>
+                    {% endif %}
+                {% endblock %}
+            {% endfor %}
+        </ol>
+    </nav>
+{% endif %}

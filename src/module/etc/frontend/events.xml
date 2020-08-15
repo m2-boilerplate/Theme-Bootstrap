@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="twig_init">
+        <observer name="m2boilerplate_twig_addon" instance="M2Boilerplate\Bootstrap\Observer\TwigObserver" />
+    </event>
+</config>
