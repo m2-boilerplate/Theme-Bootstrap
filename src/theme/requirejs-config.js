@@ -19,7 +19,6 @@ var config = {
             'jquery-ui-modules/effect-slide': 'js/empty',
             'jquery-ui-modules/effect-transfer': 'js/empty',
             'jquery-ui-modules/draggable': 'js/empty',
-            'MutationObserver': 'js/empty',
             'dayjs': 'js/dayjs.min'
         }
     },
@@ -31,3 +30,29 @@ var config = {
         }
     }
 };
+
+/**
+ * Removes polyfills only for browsers that support them
+ */
+if (typeof window !== 'undefined' && window.document) {
+    /**
+     * Polyfill Map and WeakMap for older browsers that do not support them.
+     */
+    if (typeof Map !== 'undefined' && typeof WeakMap !== 'undefined') {
+        config.map['*']['es6-collections'] = 'js/empty';
+    }
+
+    /**
+     * Polyfill MutationObserver only for the browsers that do not support it.
+     */
+    if (typeof MutationObserver !== 'undefined') {
+        config.map['*']['MutationObserver'] = 'js/empty';
+    }
+
+    /**
+     * Polyfill FormData object for old browsers that don't have full support for it.
+     */
+    if (typeof FormData !== 'undefined' && typeof FormData.prototype.get !== 'undefined') {
+        config.map['*']['FormData'] = 'js/empty';
+    }
+}

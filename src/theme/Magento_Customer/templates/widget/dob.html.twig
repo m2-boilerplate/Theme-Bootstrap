@@ -1,0 +1,9 @@
+{% import "@M2Boilerplate_Bootstrap/macros/forms.html.twig" as forms %}
+{% set _ = block.setHtmlClass('form-control') %}
+<div class="mb-3">
+    {{ forms.label(block.getStoreLabel('dob'), block.getHtmlId(), block.isRequired()) }}
+    {{ block.getFieldHtml()|raw }}
+    {% if block.getAdditionalDescription() %}
+        <div class="text-muted">{{ block.getAdditionalDescription() }}</div>
+    {% endif %}
+</div>

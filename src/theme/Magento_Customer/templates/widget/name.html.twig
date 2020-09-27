@@ -1,0 +1,44 @@
+{% import "@M2Boilerplate_Bootstrap/macros/forms.html.twig" as forms %}
+
+<div class="row gx-2">
+    {% block prefix %}
+        {% if block.showPrefix() %}
+        <div class="col-6">
+            {% if block.getPrefixOptions() %}
+                {{ forms.select_row(block.getStoreLabel('prefix'), block.getFieldName('prefix'), block.getObject().getPrefix(), block.getPrefixOptions(), block.isPrefixRequired()) }}
+            {% else %}
+                {{ forms.input_row(block.getStoreLabel('prefix'), block.getFieldName('prefix'), block.getObject().getPrefix(), block.isPrefixRequired()) }}
+            {% endif %}
+        </div>
+        <div class="col-6"></div>
+        {% endif %}
+    {% endblock %}
+    {% block firstname %}
+        <div class="col-6">
+            {{ forms.input_row(block.getStoreLabel('firstname'), block.getFieldName('firstname'), block.getObject().getFirstname(), block.getAttributeValidationClass('firstname') == 'required-entry') }}
+        </div>
+    {% endblock %}
+    {% block middlename %}
+        {% if block.showMiddlename() %}
+        <div class="col-6">
+            {{ forms.input_row(block.getStoreLabel('middlename'), block.getFieldName('middlename'), block.getObject().getMiddlename(), block.isMiddlenameRequired()) }}
+        </div>
+        {% endif %}
+    {% endblock %}
+    {% block lastname %}
+        <div class="col-6">
+            {{ forms.input_row(block.getStoreLabel('lastname'), block.getFieldName('lastname'), block.getObject().getLastname(), block.getAttributeValidationClass('lastname') == 'required-entry') }}
+        </div>
+    {% endblock %}
+    {% block suffix %}
+        {% if block.showSuffix() %}
+            <div class="col-6">
+                {% if block.getSuffixOptions() %}
+                    {{ forms.select_row(block.getStoreLabel('suffix'), block.getFieldName('suffix'), block.getObject().getSuffix(), block.getSuffixOptions(), block.isSuffixRequired()) }}
+                {% else %}
+                    {{ forms.input_row(block.getStoreLabel('suffix'), block.getFieldName('suffix'), block.getObject().getSuffix(), block.isSuffixRequired()) }}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endblock %}
+</div>

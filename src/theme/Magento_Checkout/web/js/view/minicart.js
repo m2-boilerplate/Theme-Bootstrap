@@ -1,7 +1,3 @@
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 define([
     'uiComponent',
@@ -14,16 +10,17 @@ define([
     return Component.extend({
         defaults: {
             modalContent: null,
-            isModalCreated: false
+            isModalCreated: false,
+            isCartLoading: false,
+            tracks: {
+                isModalCreated: true,
+                isCartLoading: true
+            }
         },
         shoppingCartUrl: window.checkout.shoppingCartUrl,
         maxItemsToDisplay: window.checkout.maxItemsToDisplay,
         cart: {},
 
-        // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-        /**
-         * @override
-         */
         initialize: function () {
             var self = this,
                 cartData = customerData.get('cart');
@@ -48,7 +45,6 @@ define([
 
             return this._super();
         },
-        //jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
         isLoading: ko.observable(false),
         /**
@@ -65,7 +61,7 @@ define([
             }
             require(['Magento_Ui/js/modal/modal', 'mage/translate'], function (modal) {
                 modal({
-                    title: $.mage.__('Cart'),
+                    title: $.mage.__('My Cart'),
                     type: 'slide',
                     buttons: []
                 }, $(this.modalContent));
@@ -75,6 +71,63 @@ define([
         },
         initModal: function (modalContent) {
             this.modalContent = modalContent;
+        },
+        removeItem: function (item) {
+            var self = this;
+            require(['Magento_Ui/js/modal/confirm', 'mage/translate'], function (confirm) {
+                confirm({
+                    content: $.mage.__('Are you sure you would like to remove this item from the shopping cart?'),
+                    actions: {
+                        confirm: function () {
+                            self._ajax(window.checkout.removeItemUrl, {
+                                'item_id': item.item_id
+                            });
+                        }
+                    }
+                });
+            });
+        },
+        updateItemQty: function (item, qty) {
+            item.qty = qty;
+            this._ajax(window.checkout.updateItemQtyUrl, {
+                'item_id': item.item_id,
+                'item_qty': qty
+            });
+        },
+
+        _ajax: function (url, data) {
+            $.extend(data, {
+                'form_key': $.mage.cookies.get('form_key')
+            });
+            this.isCartLoading = true;
+            $.ajax({
+                url: url,
+                data: data,
+                type: 'post',
+                dataType: 'json',
+                context: this,
+                complete: function () {
+                    this.isCartLoading = false;
+                }
+            }).done(function (response) {
+                var msg;
+
+                if (response.success) {
+                    customerData.reload(['cart'], false);
+                } else {
+                    msg = response['error_message'];
+
+                    if (msg) {
+                        require(['Magento_Ui/js/modal/alert'], function (alert) {
+                            alert({
+                                content: msg
+                            });
+                        });
+                    }
+                }
+            }).fail(function (error) {
+                console.log(JSON.stringify(error));
+            });
         },
 
         /**

@@ -17,8 +17,9 @@
         <move element="logo" destination="header.column.logo" />
         <referenceContainer name="header-wrapper" htmlClass="container">
             <container htmlClass="row" htmlTag="div">
-                <container name="header.column.logo" htmlTag="div" htmlClass="my-3 col-8 col-md-4 col-lg-3 col-xl-2" />
-                <container name="header.column.search" htmlTag="div" htmlClass="col-auto align-self-center ml-auto" />
+                <container name="header.column.logo" htmlTag="div" htmlClass="my-3 col-auto" />
+                <container name="header.column.account" htmlTag="div" htmlClass="col-auto align-self-center ml-auto" />
+                <container name="header.column.search" htmlTag="div" htmlClass="col-auto align-self-center" />
                 <container name="header.column.cart" htmlTag="div" htmlClass="col-auto align-self-center" />
             </container>
         </referenceContainer>

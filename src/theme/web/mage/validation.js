@@ -1724,6 +1724,7 @@ define([
 
             // ARIA (adding aria-invalid & aria-describedby)
             label = this.errorsFor(element);
+            label.addClass('invalid-feedback');
             elem = $(element);
 
             if (!label.attr('id')) {
@@ -1848,6 +1849,24 @@ define([
             ignoreTitle: true,
             errorClass: 'mage-error',
             errorElement: 'div',
+            highlight: function (element, errorClass, validClass) {
+                errorClass += ' is-invalid';
+                validClass += ' is-valid';
+                if (element.type === 'radio') {
+                    this.findByName(element.name).addClass(errorClass).removeClass(validClass);
+                } else {
+                    $(element).addClass(errorClass).removeClass(validClass);
+                }
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                errorClass += ' is-invalid';
+                validClass += ' is-valid';
+                if (element.type === 'radio') {
+                    this.findByName(element.name).removeClass(errorClass).addClass(validClass);
+                } else {
+                    $(element).removeClass(errorClass).addClass(validClass);
+                }
+            },
 
             /**
              * @param {*} error

@@ -1,0 +1,94 @@
+<div class="row gx-2 border-bottom py-2">
+    <div class="col-2">
+        <!-- ko if: product_has_url -->
+        <a data-bind="attr: {href: product_url, title: product_name}" tabindex="-1">
+            <!-- ko foreach: $parent.getRegion('itemImage') -->
+            <!-- ko template: {name: getTemplate(), data: item.product_image} --><!-- /ko -->
+            <!-- /ko -->
+        </a>
+        <!-- /ko -->
+        <!-- ko if: !product_has_url -->
+            <!-- ko foreach: $parent.getRegion('itemImage') -->
+                <!-- ko template: {name: getTemplate(), data: item.product_image} --><!-- /ko -->
+            <!-- /ko -->
+        <!-- /ko -->
+    </div>
+    <div class="col">
+        <!-- ko if: product_has_url -->
+            <a class="text-body text-decoration-none" data-bind="attr: {href: product_url}, html: product_name"></a>
+        <!-- /ko -->
+        <!-- ko if: !product_has_url -->
+            <!-- ko text: product_name --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: options.length -->
+        <div class="mt-2">
+            <em class="sr-only"><!-- ko i18n: 'Options Details' --><!-- /ko --></em>
+            <dl class="row mb-1">
+                <!-- ko foreach: { data: options, as: 'option' } -->
+                <dt class="col-sm-3 text-truncate"><!-- ko text: option.label --><!-- /ko -->:</dt>
+                <dd class="col-sm-9">
+                    <!-- ko if: Array.isArray(option.value) -->
+                    <span data-bind="html: option.value.join('<br>')"></span>
+                    <!-- /ko -->
+                    <!-- ko if: (!Array.isArray(option.value) && option.option_type == 'file') -->
+                    <span data-bind="html: option.value"></span>
+                    <!-- /ko -->
+                    <!-- ko if: (!Array.isArray(option.value) && option.option_type != 'file') -->
+                    <span data-bind="text: option.value"></span>
+                    <!-- /ko -->
+                </dd>
+                <!-- /ko -->
+            </dl>
+        </div>
+        <!-- /ko -->
+        <label class="sr-only" data-bind="i18n: 'Qty', attr: {for: 'cart-item-'+item_id+'-qty'}"></label>
+        <div class="row">
+            <div class="col-6 col-sm-6">
+                <div class="input-group input-group-sm my-2">
+                    <button class="d-none d-sm-block btn btn-outline-secondary" type="button" data-bind="click: $parents[2].updateItemQty.bind($parents[2], $data, qty-1)">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                    </button>
+                    <input data-bind="attr: {id: 'cart-item-'+item_id+'-qty'}, value: qty, event: { change: $parents[2].updateItemQty.bind($parents[2], $data, qty) }" inputmode="numeric" pattern="[0-9]*" type="text" size="4" class="form-control text-center" />
+                    <button class="d-none d-sm-block btn btn-outline-secondary" type="button" data-bind="click: $parents[2].updateItemQty.bind($parents[2], $data, qty+1)">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                            <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="col-6 align-self-center">
+                <!-- ko if: canApplyMsrp -->
+                    <div class="text-muted" data-bind="i18n: 'See price before order confirmation.'"></div>
+                <!-- /ko -->
+                <!-- ko ifnot: canApplyMsrp -->
+                    <div class="text-right">
+                        <!-- ko foreach: $parent.getRegion('priceSidebar') -->
+                            <!-- ko template: {name: getTemplate(), data: item.product_price, as: 'price'} --><!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+    <div class="col flex-grow-0 text-right">
+        <a href="#" data-bind="click: $parents[2].removeItem.bind($parents[2], $data), attr: {title: $t('Remove item')}"
+           class="d-block text-danger mb-1">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+            </svg>
+            <span class="sr-only" data-bind="i18n: 'Remove'"></span>
+        </a>
+        <a data-bind="attr: {href: configure_url, title: $t('Edit item')}" class="d-block">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
+                <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
+            </svg>
+            <span class="sr-only" data-bind="i18n: 'Edit'"></span>
+        </a>
+    </div>
+</div>

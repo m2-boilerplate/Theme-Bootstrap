@@ -1,0 +1,6 @@
+{% import "@M2Boilerplate_Bootstrap/macros/forms.html.twig" as forms %}
+{% set options = {} %}
+{% for option in block.getGenderOptions %}
+    {% set options = options|merge({(option.getValue()): option.getLabel()}) %}
+{% endfor %}
+{{ forms.select_row(block.getStoreLabel('gender'), block.getFieldName('gender'), block.getGender(), options, block.isRequired()) }}

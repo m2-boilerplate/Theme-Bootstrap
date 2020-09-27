@@ -1,58 +1,44 @@
 .modal {
     pointer-events: none;
 }
+
 .modal.slide .modal-dialog {
-    position: fixed;
-    margin: auto;
-    width: 320px;
+    width: 400px;
+    max-width: 80%;
     height: 100%;
-    -webkit-transform: translate3d(0%, 0, 0);
-    -ms-transform: translate3d(0%, 0, 0);
-    -o-transform: translate3d(0%, 0, 0);
-    transform: translate3d(0%, 0, 0);
+    margin: 0;
+    transform: translate(0);
+    transition: transform .2s;
 }
 
 .modal.slide .modal-content {
-    height: 100%;
-    overflow-y: auto;
-    border-radius: 0;
+    height: inherit;
     border: none;
+    border-radius: 0;
 }
 
-.modal.slide .modal-body {
-    padding: 15px 15px 80px;
+.modal.slide .modal-content .modal-body {
+    overflow-y: auto
 }
 
-/*Left */
-.modal.slide.slide-left.fade.show .modal-dialog{
-    left: 0;
+.modal.slide .modal-dialog {
+    margin-left: auto;
+    transform: translateX(100%);
 }
 
-.modal.slide.slide-left.fade .modal-dialog {
-
-    left: -320px;
-    -webkit-transition: left 0.2s ease-out;
-    -moz-transition: left 0.2s ease-out;
-    -o-transition: left 0.2s ease-out;
-    transition: left 0.2s ease-out;
+.modal.slide.slide-right .modal-dialog {
+    margin-right: auto;
+    transform: translateX(-100%);
 }
 
-/*Right / Default */
-.modal.slide.fade.show .modal-dialog {
-    right: 0;
-}
-
-.modal.slide.fade .modal-dialog {
-    right: -320px;
-    -webkit-transition: right 0.2s ease-out;
-    -moz-transition: right 0.2s ease-out;
-    -o-transition: right 0.2s ease-out;
-    transition: right 0.2s ease-out;
+.modal.slide.show .modal-dialog {
+    transform: translateX(0);
 }
 
 .btn-icon {
     position: relative;
 }
+
 .btn-icon svg {
     position: absolute;
     left: 5px;

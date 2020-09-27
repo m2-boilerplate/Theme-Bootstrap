@@ -1,0 +1,10 @@
+{% if block.getRegistration().isAllowed() %}
+    <h2>{{ 'New Customers'|trans }}</h2>
+    <p class="text-muted">{{ 'Creating an account has many benefits: check out faster, keep more than one address, track orders and more.'|trans  }}</p>
+    {% embed "@M2Boilerplate_Bootstrap/components/actions-toolbar.html.twig" %}
+        {% block left %}
+            <a href="{{ block.getCreateAccountUrl() }}" class="btn btn-primary">{{ 'Create an Account'|trans }}</a>
+        {% endblock %}
+    {% endembed %}
+{% endif %}
+

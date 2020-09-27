@@ -1,117 +1,19 @@
 <div data-block="minicart" data-bind="scope: 'minicart_content'">
     <a href="{{ getUrl('checkout/cart') }}" class="text-decoration-none" data-bind="click: openMinicart">
         {{ bs_icon('bag', '30px') }}
-        <!-- ko if: getCartParam('summary_count') -->
-        <span class="badge bg-primary" style="top: -4px; right: -6px">
+        <span class="sr-only">{{ 'My Cart'|trans }}</span>
+        <!-- ko if: getCartParam('summary_count') && getCartParam('summary_count') > 0 -->
+        <span class="badge bg-primary" data-bind="visible: getCartParam('summary_count') && getCartParam('summary_count')" style="display: none">
             <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
             <span class="sr-only" data-bind="i18n: 'items'"></span>
         </span>
         <!-- /ko -->
     </a>
-    <div class="d-none">
-        <div data-bind="afterRender: initModal">
-            <div class="overflow-auto">
+    <div style="display: none">
+        <div data-bind="afterRender: initModal" class="h-100">
+            <!-- ko if: isModalCreated -->
                 <!-- ko template: getTemplate() --><!-- /ko -->
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                MODAL GOES HERE
-                <div class="fixed-bottom p-2 shadow-lg bg-white border-top">
-                    <a href="#" class="btn btn-icon btn-outline-primary btn-block">{{ bs_icon('bag') }} Cart</a>
-                    <a href="#" class="btn btn-icon btn-success btn-block">{{ bs_icon('chevron-right') }} Checkout</a>
-                </div>
-            </div>
+            <!-- /ko -->
         </div>
     </div>
 </div>

@@ -7,6 +7,9 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <referenceContainer name="header.column.account">
+            <block name="header.account" template="Magento_Customer::header.phtml" />
+        </referenceContainer>
         <referenceBlock name="authentication-popup" remove="true" />
     </body>
 </page>

@@ -1,0 +1,70 @@
+{% macro input(name, value, id, required = false, type = 'text', validation = {}, addtionalAttributes = '', placeholder = null, additionalCssClasses = '', readOnly = false) %}
+    {% if required %}
+        {% set validation = validation|merge({'required-entry': true}) %}
+    {% endif %}
+    <input type="{{ type }}" name="{{ name }}" class="form-control{% if readOnly %}-plaintext{% endif %} {{ additionalCssClasses }}" id="{{ id }}" {% if placeholder %}placeholder="{{ placeholder }}"{% endif %} {% if readOnly %}readonly="readonly"{% endif %} {% if validation|length %}data-validate='{{ validation|json_encode }}'{% endif %} {{ addtionalAttributes|raw }} />
+{% endmacro %}
+
+{% macro select(name, value, options, id, required = false, validation = [], addtionalAttributes = '', additionalCssClasses = '', readOnly = false) %}
+    {% if required %}
+        {% set validation = validation|merge({'required-entry': true}) %}
+    {% endif %}
+    <select name="{{ name }}" class="form-select {{ additionalCssClasses }}" id="{{ id }}" {% if readOnly %}readonly="readonly"{% endif %} {% if validation|length %}data-validate='{{ validation|json_encode }}'{% endif %} {{ addtionalAttributes|raw }}>
+        {% for optionValue, label in options %}
+        <option value="{{ optionValue }}"{% if optionValue == value %} selected="selected"{% endif %}>{{ label }}</option>
+        {% endfor %}
+    </select>
+{% endmacro %}
+
+{% macro checkbox(name, value, id, isChecked = false, required = false, type = 'checkbox', validation = {}, addtionalAttributes = '', additionalCssClasses = '') %}
+    {% if required %}
+        {% set validation = validation|merge({'required-entry': true}) %}
+    {% endif %}
+    <input type="{{ type }}" name="{{ name }}" class="form-check-input {{ additionalCssClasses }}" id="{{ id }}"{% if isChecked %} checked="checked"{% endif %} {% if validation|length %}data-validate='{{ validation|json_encode }}'{% endif %} {{ addtionalAttributes|raw }} />
+{% endmacro %}
+
+{% macro label(label, for, required = false, labelClass = 'form-label') %}
+    <label for="{{ for }}" class="{{ labelClass }}">
+        {{ label }}{% if required %} <em class="text-danger">*</em>{% endif %}
+    </label>
+{% endmacro %}
+
+{% macro input_row(label, name, value, required = false, type = 'text', validation = {}, addtionalAttributes = '', placeholder = null, additionalCssClasses = '', readOnly = false) %}
+    <div class="mb-3">
+        {% set id = bs_random_hash('form_') %}
+        {{ _self.label(label, id, required) }}
+        {{ _self.input(name, value, id, required, type, validation, addtionalAttributes, placeholder == null ? label : placheholder, additionalCssClasses, readOnly) }}
+    </div>
+{% endmacro %}
+
+{% macro checkbox_row(label, name, value, isChecked = false, required = false, type = 'checkbox', inline = false, isSingle = true, validation = {}, addtionalAttributes = '', additionalCssClasses = '') %}
+    <div class="form-check{% if inline %} form-check-inline{% endif %}{% if isSingle %} mb-3{% endif %}">
+        {% set id = bs_random_hash('form_') %}
+        {{ _self.checkbox(name, value, id, isChecked, required, type, validation, addtionalAttributes, additionalCssClasses) }}
+        {{ _self.label(label, id, required, 'form-check-label') }}
+    </div>
+{% endmacro %}
+
+{% macro radio_row(label, name, value, isChecked = false, required = false, type = 'radio', inline = false, isSingle = true, validation = {}, addtionalAttributes = '', additionalCssClasses = '') %}
+    {{ _self.checkbox_row(label, name, value, isChedked, required, type, inline, validation, addtionalAttributes, isSingle, additionalCssClasses) }}
+{% endmacro %}
+
+{% macro switch_row(label, name, value, isChecked = false, required = false, type = 'checkbox', inline = false, isSingle = true, validation = {}, addtionalAttributes = '', additionalCssClasses = '') %}
+    <div class="form-check form-switch{% if inline %} form-check-inline{% endif %}{% if isSingle %} mb-3{% endif %}">
+        {% set id = bs_random_hash('form_') %}
+        {{ _self.checkbox(name, value, id, isChecked, required, validation, addtionalAttributes, additionalCssClasses) }}
+        {{ _self.label(label, id, required, 'form-check-label') }}
+    </div>
+{% endmacro %}
+
+{% macro select_row(label, name, value, options, required = false, validation = {}, addtionalAttributes = '', placeholder = null, additionalCssClasses = '', readOnly = false) %}
+    <div class="mb-3">
+        {% set id = bs_random_hash('form_') %}
+        {{ _self.label(label, id, required) }}
+        {{ _self.select(name, value, options, id, required, validation, addtionalAttributes, additionalCssClasses, readOnly) }}
+    </div>
+{% endmacro %}
+
+{% macro required_field_notice() %}
+    <p class="text-danger text-right">{{ '* Required Fields'|trans }}</p>
+{% endmacro %}

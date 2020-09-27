@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="customer_form_login" destination="customer.login.container.left" />
+        <move element="customer.new" destination="customer.login.container.right" />
+        <referenceContainer name="customer.login.container" htmlClass="row" htmlTag="div">
+            <container name="customer.login.container.left" htmlTag="div" htmlClass="col-12 col-md-6" />
+            <container name="customer.login.container.right" htmlTag="div" htmlClass="col-12 col-md-6" />
+        </referenceContainer>
+        <referenceBlock name="require-cookie">
+            <arguments>
+                <argument name="triggers" xsi:type="array">
+                    <item name="loginButton" xsi:type="string">.js-login-submit-btn</item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

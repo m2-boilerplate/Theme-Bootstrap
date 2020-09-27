@@ -1,0 +1,13 @@
+<picture>
+    <source
+            type="image/webp"
+            srcset="{{ block.getImageUrl() }} 400w"
+            sizes="100w"
+    />
+<img class="img-fluid {{ block.getClass() }}"
+        {{ block.getCustomAttributes() }}
+        src="{{ block.getImageUrl() }}"
+        width="{{ block.getWidth() }}"
+        height="{{ block.getHeight() }}"
+        alt="{{ block.getLabel() }}"/>
+</picture>

@@ -11,6 +11,7 @@
 
 namespace M2Boilerplate\Bootstrap\Observer;
 
+use M2Boilerplate\Bootstrap\Service\TwigTemplateLocations;
 use M2Boilerplate\Bootstrap\Twig\Extension;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -21,7 +22,7 @@ class TwigObserver implements ObserverInterface
     /**
      * @var Extension
      */
-    private $twigExtension;
+    protected $twigExtension;
 
     public function __construct(Extension $twigExtension)
     {

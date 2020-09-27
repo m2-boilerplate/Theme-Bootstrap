@@ -8,7 +8,7 @@ define([
         $.widget('mage.modal', widget, {
             options: {
                 modalVisibleClass: 'show',
-                overlayClass: 'modal-backdrop fade show',
+                overlayClass: 'modal-backdrop',
                 parentModalClass: 'modal-open'
             },
             _setActive: function () {
@@ -50,6 +50,11 @@ define([
                 this.modal.removeAttr('style');
                 this.modal.data('active', false);
 
+            },
+            _createOverlay: function () {
+                this._super();
+                this.overlay = $('.' + this.options.overlayClass);
+                this.overlay.addClass('fade show');
             }
         });
 

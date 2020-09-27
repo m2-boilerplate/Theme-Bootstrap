@@ -1,0 +1,63 @@
+{% import "@M2Boilerplate_Bootstrap/macros/forms.html.twig" as forms %}
+{% import "@M2Boilerplate_Bootstrap/macros/headlines.html.twig" as headlines %}
+{% set dob = block.getLayout().createBlock('\\Magento\\Customer\\Block\\Widget\\Dob') %}
+{% set taxvat = block.getLayout().createBlock('\\Magento\\Customer\\Block\\Widget\\Taxvat') %}
+{% set gender = block.getLayout().createBlock('\\Magento\\Customer\\Block\\Widget\\Gender') %}
+<div class="py-4">
+    <div class="row">
+        <div class="col col-md-8 col-lg-6 mx-auto">
+            {% block card %}
+                <div class="card mx-auto">
+                    {% block card_body %}
+                        <div class="card-body">
+                            {{ headlines.h1('Create New Customer Account'|trans, 4, 'card-title') }}
+                            {{ child_html('form_fields_before') }}
+                            {{ child_html('customer.form.register.extra') }}
+                            {% block form %}
+                                <form action="{{ block.getPostActionUrl() }}" method="post" id="form-validate" enctype="multipart/form-data" autocomplete="off">
+                                    <input type="hidden" name="success_url" value="{{ block.getSuccessUrl() }}">
+                                    <input type="hidden" name="error_url" value="{{ block.getSuccessUrl() }}">
+                                    <fieldset>
+                                        <legend class="sr-only">{{ 'Personal Information'|trans }}</legend>
+                                        {% block name %}
+                                            {{ block.getLayout().createBlock('\\Magento\\Customer\\Block\\Widget\\Name').setObject(block.getFormData()).setForceUseCustomerAttributes(true).toHtml()|raw }}
+                                        {% endblock %}
+                                        {% block newsletter %}
+                                            {% if block.isNewsletterEnabled() %}
+                                                {{ forms.checkbox_row('Sign Up for Newsletter'|trans, 'is_subscribed', '1') }}
+                                                {{ child_html('customer.form.register.newsletter') }}
+                                            {% endif %}
+                                        {% endblock %}
+                                        <div class="row gx-2">
+                                            {% block dob %}
+                                                {% if dob.isEnabled() %}
+                                                    <div class="col-6">
+                                                        {{ dob.setDate(block.getFormData().getDob()).toHtml()|raw }}
+                                                    </div>
+                                                {% endif %}
+                                            {% endblock %}
+                                            {% block taxvat %}
+                                                {% if taxvat.isEnabled() %}
+                                                    <div class="col-6">
+                                                        {{ taxvat.setTaxvat(block.getFormData().getTaxvat()).toHtml()|raw }}
+                                                    </div>
+                                                {% endif %}
+                                            {% endblock %}
+                                            {% block gender %}
+                                                {% if gender.isEnabled() %}
+                                                    <div class="col-6">
+                                                        {{ gender.setGender(block.getFormData().getGender()).toHtml()|raw }}
+                                                    </div>
+                                                {% endif %}
+                                            {% endblock %}
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+</div>

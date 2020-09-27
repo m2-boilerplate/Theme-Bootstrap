@@ -1,0 +1,32 @@
+<!-- ko if: !getCartParam('summary_count') -->
+<div class="align-items-center d-flex flex-column justify-content-center h-100">
+    <div class="text-muted text-center">
+        <div data-bind="i18n: 'You have no items in your shopping cart.'"></div>
+    </div>
+</div>
+<!-- /ko -->
+<!-- ko if: getCartParam('summary_count') -->
+<div data-bind="style: {opacity: isCartLoading ? 0.4 : null, 'pointer-events': isCartLoading ? 0.4 : null}">
+    <!-- ko foreach: { data: getCartItems(), as: 'item' } -->
+        <!--ko foreach: $parent.getRegion($parent.getItemRenderer(item.product_type)) -->
+            <!-- ko template: {name: getTemplate(), data: item } --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+</div>
+<div class="invisible mt-5">
+    <each args="getRegion('subtotalContainer')" render=""/>
+    <a class="btn btn-icon btn-outline-primary btn-block" data-bind="i18n: 'View and Edit Cart', attr:{href: shoppingCartUrl}"></a>
+    <!-- ko if: getCartParam('possible_onepage_checkout') -->
+    <a href="#" class="btn btn-icon btn-primary btn-block" data-bind="i18n: 'Proceed to Checkout'"></a>
+    <!-- /ko -->
+    <div data-bind="html: getCartParam('extra_actions')"></div>
+</div>
+<div class="fixed-bottom p-2 shadow-lg bg-white border-top">
+    <each args="getRegion('subtotalContainer')" render=""/>
+    <a class="btn btn-icon btn-outline-primary btn-block" data-bind="i18n: 'View and Edit Cart', attr:{href: shoppingCartUrl}"></a>
+    <!-- ko if: getCartParam('possible_onepage_checkout') -->
+    <a href="#" class="btn btn-icon btn-primary btn-block" data-bind="i18n: 'Proceed to Checkout'"></a>
+    <!-- /ko -->
+    <div data-bind="html: getCartParam('extra_actions')"></div>
+</div>
+<!-- /ko -->

@@ -1,0 +1,24 @@
+{% import "@M2Boilerplate_Bootstrap/macros/forms.html.twig" as forms %}
+<h2>{{ 'Registered Customers'|trans }}</h2>
+<form class="form form-login"
+      action="{{ block.getPostActionUrl() }}"
+      method="post"
+      id="login-form"
+      data-mage-init='{"validation":{}}'>
+    {{ block.getBlockHtml('formkey')|raw }}
+    <p class="text-muted">{{ 'If you have an account, sign in with your email address.'|trans }}</p>
+    {{ forms.input_row('Email'|trans, 'login[username]', block.getUsername(), true, 'email', {'validate-email': true} ,'autocomplete="off" data-mage-init=\'{"mage/trim-input":{}}\'') }}
+    {{ forms.input_row('Password'|trans, 'login[password]', '', true, 'password', {}, 'autocomplete="off"') }}
+    {{ child_html('form_additional_info') }}
+    {{ forms.required_field_notice() }}
+    {% embed "@M2Boilerplate_Bootstrap/components/actions-toolbar.html.twig" %}
+        {% block left %}
+            <a class="btn btn-link pl-0" href="{{ block.getForgotPasswordUrl()|trans }}">{{ 'Forgot Your Password?'|trans }}</a>
+        {% endblock %}
+        {% block right %}
+            <button type="submit" class="btn btn-primary js-login-submit-btn" name="send" id="send2">{{ 'Sign In'|trans }}</button>
+        {% endblock %}
+    {% endembed %}
+</form>
+
+

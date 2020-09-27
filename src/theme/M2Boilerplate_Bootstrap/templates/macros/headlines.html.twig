@@ -1,0 +1,29 @@
+{% macro headline(text = '', level = 1, displayLevel = null, additionalCssClasses = null) %}
+ <h{{ level }} class="{% if displayLevel %}h{{ displayLevel }} {% endif %} {{ additionalCssClasses }}">
+     {{ text }}
+ </h{{ level }}>
+{% endmacro %}
+
+{% macro h1(text = '', displayLevel = null, additionalCssClasses = null) %}
+    {{ _self.headline(text, 1, displayLevel, additionalCssClasses) }}
+{% endmacro %}
+
+{% macro h2(text = '', displayLevel = null, additionalCssClasses = null) %}
+    {{ _self.headline(text, 2, displayLevel, additionalCssClasses) }}
+{% endmacro %}
+
+{% macro h3(text = '', displayLevel = null, additionalCssClasses = null) %}
+    {{ _self.headline(text, 3, displayLevel, additionalCssClasses) }}
+{% endmacro %}
+
+{% macro h4(text = '', displayLevel = null, additionalCssClasses = null) %}
+    {{ _self.headline(text, 4, displayLevel, additionalCssClasses) }}
+{% endmacro %}
+
+{% macro h5(text = '', displayLevel = null, additionalCssClasses = null) %}
+    {{ _self.headline(text, 5, displayLevel, additionalCssClasses) }}
+{% endmacro %}
+
+{% macro h6(text = '', displayLevel = null, additionalCssClasses = null) %}
+    {{ _self.headline(text, 6, displayLevel, additionalCssClasses) }}
+{% endmacro %}
