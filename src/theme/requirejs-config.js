@@ -30,6 +30,9 @@ var config = {
             },
             'knockoutjs/knockout': {
                 'knockoutjs/mixin': true
+            },
+            'jquery': {
+                'jquery/patches/jquery': false
             }
         }
     }
