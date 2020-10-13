@@ -19,6 +19,7 @@ var config = {
             'jquery-ui-modules/effect-slide': 'js/empty',
             'jquery-ui-modules/effect-transfer': 'js/empty',
             'jquery-ui-modules/draggable': 'js/empty',
+            'Magento_Ui/js/lib/knockout/bootstrap': 'js/empty',
             'dayjs': 'js/dayjs.min'
         }
     },
@@ -26,6 +27,9 @@ var config = {
         mixins: {
             'Magento_Ui/js/modal/modal': {
                 'Magento_Ui/js/modal/modal-bootstrap-mixin': true
+            },
+            'knockoutjs/knockout': {
+                'knockoutjs/mixin': true
             }
         }
     }

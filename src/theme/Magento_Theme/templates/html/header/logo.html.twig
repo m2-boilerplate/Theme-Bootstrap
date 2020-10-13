@@ -6,6 +6,8 @@
     <img src="{{ block.getLogoSrc() }}"
          title="{{ block.getLogoAlt() }}"
          alt="{{ block.getLogoAlt() }}"
+         {% if block.getLogoWidth() %}width="{{ block.getLogoWidth() }}"{% endif %}
+         {% if block.getLogoWidth() %}height="{{ block.getLogoHeight() }}"{% endif %}
          class="img-fluid"
     />
 </a>
